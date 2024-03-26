@@ -1,18 +1,14 @@
-import { appConfig } from "../app/constants/app.config.production";
-import { dashboardConfig } from "../app/constants/dashboard.config.production";
-import { firebaseConfig } from "../app/constants/firebase.config.production";
-import { openaiConfig } from "../app/constants/openai.config.production";
+import { appConfig } from '../app/constants/app.config.production';
+import { dashboardConfig } from '../app/constants/dashboard.config.production';
+import { firebaseConfig } from '../app/constants/firebase.config.production';
 
 firebaseConfig.app.apiKey = '';
-openaiConfig.apiKey = '';
-openaiConfig.organization = 'org-Cdw4eLOkxkrRo6ZOQFayrg4q';
 
 const config = {
   ...appConfig,
   firebase: firebaseConfig,
-  openai: openaiConfig,
   dashboard: dashboardConfig,
-}
+};
 
 export const environment = {
   development: false,
