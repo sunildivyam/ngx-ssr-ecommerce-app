@@ -1,26 +1,26 @@
 {
   "projects": {
-    "staging": "annu-business",
-    "production": "annuadvent-prod"
+    "staging": "ecommerce",
+    "production": "ecommerce-prod"
   },
   "targets": {
-    "annu-business": {
+    "ecommerce": {
       "hosting": {
         "staging": [
-          "annu-business"
+          "ecommerce"
         ],
         "production": [
-          "annu-business"
+          "ecommerce"
         ]
       }
     },
-    "annuadvent-prod": {
+    "ecommerce-prod": {
       "hosting": {
         "staging": [
-          "annuadvent-prod"
+          "ecommerce-prod"
         ],
         "production": [
-          "annuadvent-prod"
+          "ecommerce-prod"
         ]
       }
     }

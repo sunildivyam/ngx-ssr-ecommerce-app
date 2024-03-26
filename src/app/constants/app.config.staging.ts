@@ -2,9 +2,9 @@ import { AppConfig } from '@annuadvent/ngx-core/app-config';
 
 export const appConfig: AppConfig = {
   name: 'annuBusiness',
-  copyrightText: 'copyright©annu-business',
+  copyrightText: 'copyright©ecommerce',
   themeName: 'skyBlue',
-  apiBaseUrl: 'https://annu-business.web.app',
+  apiBaseUrl: 'https://ecommerce.web.app',
   imagesSourceUrl: '/getImage?imageId=',
   loginUrl: '/login',
   logoutUrl: '/login',
@@ -63,5 +63,5 @@ export const appConfig: AppConfig = {
     twitter: 'https://twitter.com/annuadvent',
     linkedin: 'https://www.linkedin.com/company/annuadvent',
     instagram: 'https://www.instagram.com/annuadvent/',
-  }
+  },
 };

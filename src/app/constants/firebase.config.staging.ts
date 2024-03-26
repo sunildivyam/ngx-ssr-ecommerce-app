@@ -61,30 +61,32 @@ const ui = {
 };
 
 const app: FireAppConfig = {
-  projectId: 'annu-business',
-  appId: '1:140977750488:web:870df7cc0848f6274ab2ad',
-  storageBucket: 'annu-business.appspot.com',
-  locationId: 'us-central',
   apiKey: '',
-  authDomain: 'annu-business.firebaseapp.com',
-  messagingSenderId: '140977750488',
-  measurementId: 'G-36J6R2BDWD',
+  authDomain: 'ecommerce-333.firebaseapp.com',
+  projectId: 'ecommerce-333',
+  storageBucket: 'ecommerce-333.appspot.com',
+  messagingSenderId: '688781274685',
+  appId: '1:688781274685:web:45ccbd37c0d7690e6e0454',
+  measurementId: 'G-SLN5PFLR6W',
+  locationId: 'us-central',
 };
 
 const storage: FireStorageConfig = {
-  baseStorageUrl: 'annu-business/articles',
-  fireStorageBaseApiUrl: 'https://firebasestorage.googleapis.com/v0/b/annu-business.appspot.com/o',
+  baseStorageUrl: 'ecommerce/articles',
+  fireStorageBaseApiUrl:
+    'https://firebasestorage.googleapis.com/v0/b/ecommerce.appspot.com/o',
   imageDimensions: {
     maxKBs: 1024,
     maxWidth: 900,
     maxHeight: 450,
     minWidth: 100,
     minHeight: 100,
-  }
+  },
 };
 
 const store: FireStoreConfig = {
-  firestoreBaseApiUrl: 'https://firestore.googleapis.com/v1/projects/annu-business/databases/(default)/documents',
+  firestoreBaseApiUrl:
+    'https://firestore.googleapis.com/v1/projects/ecommerce/databases/(default)/documents',
 };
 
 export const firebaseConfig: FirebaseConfig = {
@@ -92,4 +94,4 @@ export const firebaseConfig: FirebaseConfig = {
   ui,
   store,
   storage,
-}
+};

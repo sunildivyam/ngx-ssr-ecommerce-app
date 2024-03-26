@@ -62,29 +62,31 @@ const ui = {
 
 const app: FireAppConfig = {
   apiKey: '',
-  authDomain: 'annuadvent-prod.firebaseapp.com',
-  projectId: 'annuadvent-prod',
+  authDomain: 'ecommerce-333.firebaseapp.com',
+  projectId: 'ecommerce-333',
+  storageBucket: 'ecommerce-333.appspot.com',
+  messagingSenderId: '688781274685',
+  appId: '1:688781274685:web:45ccbd37c0d7690e6e0454',
+  measurementId: 'G-SLN5PFLR6W',
   locationId: 'us-central',
-  storageBucket: 'annuadvent-prod.appspot.com',
-  messagingSenderId: '354458643335',
-  appId: '1:354458643335:web:37b32c501e514509598122',
-  measurementId: 'G-RKZTBE5D10',
 };
 
 const storage: FireStorageConfig = {
-  baseStorageUrl: 'annuadvent-prod/articles',
-  fireStorageBaseApiUrl: 'https://firebasestorage.googleapis.com/v0/b/annuadvent-prod.appspot.com/o',
+  baseStorageUrl: 'ecommerce-prod/articles',
+  fireStorageBaseApiUrl:
+    'https://firebasestorage.googleapis.com/v0/b/ecommerce-prod.appspot.com/o',
   imageDimensions: {
     maxKBs: 1024,
     maxWidth: 900,
     maxHeight: 450,
     minWidth: 100,
     minHeight: 100,
-  }
+  },
 };
 
 const store: FireStoreConfig = {
-  firestoreBaseApiUrl: 'https://firestore.googleapis.com/v1/projects/annuadvent-prod/databases/(default)/documents',
+  firestoreBaseApiUrl:
+    'https://firestore.googleapis.com/v1/projects/ecommerce-prod/databases/(default)/documents',
 };
 
 export const firebaseConfig: FirebaseConfig = {
@@ -92,4 +94,4 @@ export const firebaseConfig: FirebaseConfig = {
   ui,
   store,
   storage,
-}
+};

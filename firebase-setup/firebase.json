@@ -19,16 +19,16 @@
   "hosting": [
     {
       "target": "staging",
-      "public": "functions/dist/ngx-ssr-app/browser",
-      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "public": "functions/dist/ngx-ssr-ecommerce-app/browser",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
       "rewrites": [
         {
           "source": "sitemap.xml",
           "function": "getSitemapXmlDownloadUrlFn"
-        },
-        {
-          "source": "getImage",
-          "function": "getImageFn"
         },
         {
           "source": "**",
@@ -46,7 +46,7 @@
           ]
         },
         {
-          "source": "getImage**",
+          "source": "images**",
           "headers": [
             {
               "key": "Cache-Control",
@@ -76,16 +76,16 @@
     },
     {
       "target": "production",
-      "public": "functions/dist/ngx-ssr-app/browser",
-      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "public": "functions/dist/ngx-ssr-ecommerce-app/browser",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
       "rewrites": [
         {
           "source": "sitemap.xml",
           "function": "getSitemapXmlDownloadUrlFn"
-        },
-        {
-          "source": "getImage",
-          "function": "getImageFn"
         },
         {
           "source": "**",
@@ -103,7 +103,7 @@
           ]
         },
         {
-          "source": "getImage**",
+          "source": "images**",
           "headers": [
             {
               "key": "Cache-Control",

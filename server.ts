@@ -10,7 +10,7 @@ import * as bodyparser from 'body-parser';
 import { AppServerModule } from './src/main.server';
 import { environment } from './src/environments/environment';
 import { env } from 'node:process';
-import { imagesRouter } from '@annuadvent/ngx-tools/fire-apis';
+import { imagesRouter, sitemapRouter } from '@annuadvent/ngx-tools/fire-apis';
 
 // APIs Routers
 // import { usersRouter } from '@annuadvent/ngx-tools/fire-apis';
@@ -35,7 +35,7 @@ export function app(): express.Express {
   setNodeEnv();
 
   // source paths for index.html
-  const distFolder = join(process.cwd(), 'dist/ngx-ssr-app/browser');
+  const distFolder = join(process.cwd(), 'dist/ngx-ssr-ecommerce-app/browser');
   const indexHtml = existsSync(join(distFolder, 'index.original.html'))
     ? 'index.original.html'
     : 'index';
@@ -52,7 +52,8 @@ export function app(): express.Express {
   // REST Express API endpoints
   // Add custom APIs | APP_SPECIFIC
 
-  server.use('/api/images', imagesRouter);
+  server.use('/images', imagesRouter);
+  server.use('/sitemap.xml', sitemapRouter);
 
   // All other
   server.use(['/api', '/api/*'], (req, res) =>

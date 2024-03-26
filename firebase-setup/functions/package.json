@@ -1,6 +1,6 @@
 {
   "name": "functions",
-  "description": "Annu Advent Angular SSR firebase function",
+  "description": "Ecommerce Angular SSR firebase function",
   "scripts": {
     "serve": "firebase emulators:start --only functions",
     "shell": "firebase functions:shell",
