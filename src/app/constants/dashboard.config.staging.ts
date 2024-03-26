@@ -8,7 +8,7 @@ export const dashboardMetaInfo = {
   'Content-Type': 'text/html; charset=utf-8',
   language: 'english',
   'revisit-after': '7 days',
-  author: 'Annu Business',
+  author: 'Ecommerce',
   type: 'website',
   'article:published_time': '2022-12-21T09:12:02.783Z',
   'article:author': 'Sunil Kumar',
@@ -17,7 +17,7 @@ export const dashboardMetaInfo = {
   image: '',
   url: 'https://ecommerce.web.app/dashboard',
   card: 'summary_large_image',
-  site_name: 'Annu Business',
+  site_name: 'Ecommerce',
   audio: '',
   video: '',
 };

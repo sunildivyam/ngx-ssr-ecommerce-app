@@ -2,7 +2,7 @@
   "name": "@annuadvent/ngx-ssr-ecommerce-app",
   "version": "0.0.0",
   "private": true,
-  "author": "Annu advent",
+  "author": "ECommerce",
   "license": "MIT",
   "description": "E-commerce SSR initialized app",
   "keywords": [
