@@ -10,7 +10,12 @@ import * as bodyparser from 'body-parser';
 import { AppServerModule } from './src/main.server';
 import { environment } from './src/environments/environment';
 import { env } from 'node:process';
-import { imagesRouter, sitemapRouter } from '@annuadvent/ngx-tools/fire-apis';
+import {
+  addressRouter,
+  imagesRouter,
+  sitemapRouter,
+  usersRouter,
+} from '@annuadvent/ngx-tools/fire-apis';
 
 // APIs Routers
 // import { usersRouter } from '@annuadvent/ngx-tools/fire-apis';
@@ -27,6 +32,14 @@ const setNodeEnv = (): void => {
 
   // Set Firebase Config
   env.FIREBASE_CONFIG = JSON.stringify(environment.appConfig.firebase.app);
+
+  // Set firebase service-account.json path, needed only on dev environment
+  if (environment.development) {
+    env.FIREBASE_SERVICE_ACCOUNT = join(
+      __dirname,
+      `../../../../../Annu Advent/Company Meta Info/App- documentation/ecommerce-333-firebase-adminsdk-fsgag-770ebfdddb.json`
+    );
+  }
 };
 
 // The Express app is exported so that it can be used by serverless Functions.
@@ -54,6 +67,8 @@ export function app(): express.Express {
 
   server.use('/images', imagesRouter);
   server.use('/sitemap.xml', sitemapRouter);
+  server.use('/api/addresses', addressRouter);
+  server.use('/api/users', usersRouter);
 
   // All other
   server.use(['/api', '/api/*'], (req, res) =>

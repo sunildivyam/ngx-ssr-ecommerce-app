@@ -27,10 +27,6 @@
       ],
       "rewrites": [
         {
-          "source": "sitemap.xml",
-          "function": "getSitemapXmlDownloadUrlFn"
-        },
-        {
           "source": "**",
           "function": "ssrAppFn"
         }
@@ -83,10 +79,6 @@
         "**/node_modules/**"
       ],
       "rewrites": [
-        {
-          "source": "sitemap.xml",
-          "function": "getSitemapXmlDownloadUrlFn"
-        },
         {
           "source": "**",
           "function": "ssrAppFn"

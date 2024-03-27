@@ -1,16 +1,16 @@
 {
   "projects": {
-    "staging": "ecommerce",
+    "staging": "ecommerce-333",
     "production": "ecommerce-prod"
   },
   "targets": {
-    "ecommerce": {
+    "ecommerce-333": {
       "hosting": {
         "staging": [
-          "ecommerce"
+          "ecommerce-333"
         ],
         "production": [
-          "ecommerce"
+          "ecommerce-333"
         ]
       }
     },

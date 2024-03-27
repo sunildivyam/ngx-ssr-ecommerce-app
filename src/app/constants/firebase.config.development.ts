@@ -74,7 +74,7 @@ const app: FireAppConfig = {
 const storage: FireStorageConfig = {
   baseStorageUrl: 'ecommerce/articles',
   fireStorageBaseApiUrl:
-    'https://firebasestorage.googleapis.com/v0/b/ecommerce.appspot.com/o',
+    'https://firebasestorage.googleapis.com/v0/b/ecommerce-333.appspot.com/o',
   imageDimensions: {
     maxKBs: 1024,
     maxWidth: 900,
@@ -86,7 +86,7 @@ const storage: FireStorageConfig = {
 
 const store: FireStoreConfig = {
   firestoreBaseApiUrl:
-    'https://firestore.googleapis.com/v1/projects/ecommerce/databases/(default)/documents',
+    'https://firestore.googleapis.com/v1/projects/ecommerce-333/databases/(default)/documents',
 };
 
 export const firebaseConfig: FirebaseConfig = {
