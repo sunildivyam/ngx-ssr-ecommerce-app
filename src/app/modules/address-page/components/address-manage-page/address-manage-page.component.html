@@ -1,0 +1,10 @@
+<div class="flex-container">
+  <p>address-manage-page works!</p>
+  <anu-address-form
+    class="container spacing-half"
+    [instructionsOnly]="false"
+    saveBtnLabel="Add Address"
+    (defaultChanged)="OnDefaultAddressChange($event)"
+    (changed)="onAddressChange($event)"
+  ></anu-address-form>
+</div>

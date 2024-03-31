@@ -4,3 +4,13 @@
 a {
   text-shadow: 0 0 0.5rem var(--anu-secondary-lighter);
 }
+
+input[type='text'],
+input[type='number'],
+input[type='email'],
+input[type='password'],
+textarea,
+select,
+option {
+  padding: 0.5rem 1rem;
+}
