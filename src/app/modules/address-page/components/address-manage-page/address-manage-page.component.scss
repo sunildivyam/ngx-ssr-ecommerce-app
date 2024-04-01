@@ -2,4 +2,8 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+
+  .manage-card {
+    max-width: 40rem;
+  }
 }

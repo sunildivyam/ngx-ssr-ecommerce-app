@@ -1,10 +1,22 @@
 <div class="flex-container">
-  <p>address-manage-page works!</p>
-  <anu-address-form
-    class="container"
-    [instructionsOnly]="false"
-    saveBtnLabel="Add Address"
-    (defaultChanged)="OnDefaultAddressChange($event)"
-    (changed)="onAddressChange($event)"
-  ></anu-address-form>
+  <div class="manage-card container relative shadow spacing spacing-around-v">
+    <anu-error
+      *ngIf="error"
+      [code]="error?.code"
+      [message]="error?.message"
+    ></anu-error>
+    <anu-address-form
+      *ngIf="address"
+      [value]="address"
+      [isDefault]="isDefault"
+      class="container spacing-around-v"
+      [instructionsOnly]="instructionsOnly"
+      [saveBtnLabel]="isEditPage ? 'Update Address' : 'Add Address'"
+      (defaultChanged)="OnDefaultAddressChange($event)"
+      (changed)="onAddressChange($event)"
+      (submitClicked)="onSubmitClicked($event)"
+      (cancelClicked)="onCancelClicked($event)"
+    ></anu-address-form>
+    <anu-spinner [show]="loading"></anu-spinner>
+  </div>
 </div>

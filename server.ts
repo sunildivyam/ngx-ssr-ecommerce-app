@@ -14,7 +14,7 @@ import {
   addressRouter,
   imagesRouter,
   sitemapRouter,
-  usersRouter,
+  usersRouter
 } from '@annuadvent/ngx-tools/fire-apis';
 
 // APIs Routers
@@ -79,14 +79,14 @@ export function app(): express.Express {
   server.get(
     '*.*',
     express.static(distFolder, {
-      maxAge: '1y',
+      maxAge: '1y'
     })
   );
 
   // ANGULAR ROUTES
 
   // Routes that skips server side rendering | APP_SPECIFIC
-  server.get(['/login', '/dashboard', '/dashboard/**'], (req, res) => {
+  server.get(['/login', '/my', '/my/**'], (req, res) => {
     res.sendFile(join(distFolder, `${indexHtml}`));
   });
 
@@ -94,7 +94,7 @@ export function app(): express.Express {
   server.engine(
     'html',
     ngExpressEngine({
-      bootstrap: AppServerModule,
+      bootstrap: AppServerModule
     })
   );
 
@@ -102,7 +102,7 @@ export function app(): express.Express {
   server.get('*', (req, res) => {
     res.render(indexHtml, {
       req,
-      providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }],
+      providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }]
     });
   });
 

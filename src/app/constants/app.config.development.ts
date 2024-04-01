@@ -8,7 +8,7 @@ export const appConfig: AppConfig = {
   imagesSourceUrl: '/getImage?imageId=',
   loginUrl: '/login',
   logoutUrl: '/login',
-  profileUrl: '/dashboard',
+  profileUrl: '/my/dashboard',
   adminEmail: 'info@annubiztech.com',
   defaultPageSize: 5,
   tNcUrl: '/tnc/terms-and-conditions',
@@ -38,30 +38,30 @@ export const appConfig: AppConfig = {
     card: 'summary_large_image',
     site_name: 'Ecommerce',
     audio: '',
-    video: '',
+    video: ''
   },
   mainMenuItems: [
     {
       title: 'Sample Category 1',
-      href: ['./sample-category-1'],
+      href: ['./sample-category-1']
     },
     {
       title: 'Sample Category 2',
-      href: ['./sample-category-2'],
+      href: ['./sample-category-2']
     },
     {
       title: 'Sample Category 3',
-      href: ['./sample-category-3'],
+      href: ['./sample-category-3']
     },
     {
       title: 'Sample Category 4',
-      href: ['./sample-category-4'],
-    },
+      href: ['./sample-category-4']
+    }
   ],
   socialMedia: {
     facebook: 'https://www.facebook.com/profile.php?id=100089738215994',
     twitter: 'https://twitter.com/annuadvent',
     linkedin: 'https://www.linkedin.com/company/annuadvent',
-    instagram: 'https://www.instagram.com/annuadvent/',
-  },
+    instagram: 'https://www.instagram.com/annuadvent/'
+  }
 };

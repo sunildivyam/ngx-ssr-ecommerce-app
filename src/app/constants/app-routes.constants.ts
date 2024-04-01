@@ -5,21 +5,27 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-    data: { title: 'Sign In' },
+    data: { title: 'Sign In' }
   },
   {
-    path: 'dashboard',
-    loadChildren: () =>
-      import('../modules/dashboard').then((m) => m.DashboardModule),
+    path: 'my',
+    children: [
+      {
+        path: 'dashboard',
+        loadChildren: () =>
+          import('../modules/dashboard').then((m) => m.DashboardModule)
+      },
+      {
+        path: 'addresses',
+        loadChildren: () =>
+          import('../modules/address-page').then((m) => m.AddressPageModule)
+      }
+    ]
   },
-  {
-    path: 'addresses',
-    loadChildren: () =>
-      import('../modules/address-page').then((m) => m.AddressPageModule),
-  },
+
   {
     path: '**',
     redirectTo: '',
-    pathMatch: 'full',
-  },
+    pathMatch: 'full'
+  }
 ];
