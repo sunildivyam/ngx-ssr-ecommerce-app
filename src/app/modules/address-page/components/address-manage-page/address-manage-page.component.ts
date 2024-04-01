@@ -5,6 +5,11 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Error } from '@annuadvent/ngx-common-ui/error';
 import { Subscription, filter } from 'rxjs';
 
+/**
+ * Add/Edit your Address
+ * 1) On Submit, redirects back to the redirectUrl, if given else back to Address List Page by default.
+ * 2) Manage Address from any other Page, just pass redirectUrl, to return back.
+ */
 @Component({
   selector: 'app-address-manage-page',
   templateUrl: './address-manage-page.component.html',
