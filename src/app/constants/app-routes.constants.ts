@@ -19,6 +19,11 @@ export const routes: Routes = [
         path: 'addresses',
         loadChildren: () =>
           import('../modules/address-page').then((m) => m.AddressPageModule)
+      },
+      {
+        path: 'profile',
+        loadChildren: () =>
+          import('../modules/profile-page').then((m) => m.ProfilePageModule)
       }
     ]
   },

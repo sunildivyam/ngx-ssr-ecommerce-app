@@ -3,7 +3,12 @@
   flex-direction: column;
   width: 100%;
 
-  .manage-card {
+  .profile-card {
     max-width: calc(var(--anu-site-width) / 2);
+  }
+
+  .readonly-mode {
+    border: none;
+    outline: none;
   }
 }
