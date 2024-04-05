@@ -4,6 +4,7 @@ import { AddressPageService } from '../../services/address-page.service';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Error } from '@annuadvent/ngx-common-ui/error';
 import { Subscription, filter } from 'rxjs';
+import { URLS } from '../../constants/api-urls.constants';
 
 /**
  * Add/Edit your Address
@@ -23,6 +24,7 @@ export class AddressManagePageComponent {
   error: Error = null;
   navigationEndSubscription: Subscription;
   instructionsOnly: false;
+  pincodeUrl: string = URLS.PINCODE;
 
   constructor(
     private router: Router,

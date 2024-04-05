@@ -8,12 +8,16 @@ import { ReactiveFormModule } from '@annuadvent/ngx-common-ui/reactive-form';
 import { SpinnerModule } from '@annuadvent/ngx-common-ui/spinner';
 import { ErrorModule } from '@annuadvent/ngx-common-ui/error';
 import { UtilsModule } from '@annuadvent/ngx-core/utils';
+import { HttpClientModule } from '@angular/common/http';
+import { ProfilePageService } from './services/profile-page.service';
 
 @NgModule({
   declarations: [ProfilePageComponent],
+  providers: [ProfilePageService],
   imports: [
     CommonModule,
     ProfilePageRoutingModule,
+    HttpClientModule,
     ReactiveFormsModule,
     ReactiveFormModule,
     SpinnerModule,

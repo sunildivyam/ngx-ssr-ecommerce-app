@@ -1,1 +1,3 @@
-export const URLS = {};
+export const URLS = {
+  PROFILE_PARAMS: '/api/remote-config/profile/params'
+};

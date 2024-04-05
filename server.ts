@@ -14,7 +14,8 @@ import {
   addressRouter,
   imagesRouter,
   sitemapRouter,
-  usersRouter
+  usersRouter,
+  remoteConfigRouter
 } from '@annuadvent/ngx-tools/fire-apis';
 
 // APIs Routers
@@ -69,6 +70,7 @@ export function app(): express.Express {
   server.use('/sitemap.xml', sitemapRouter);
   server.use('/api/addresses', addressRouter);
   server.use('/api/users', usersRouter);
+  server.use('/api/remote-config', remoteConfigRouter);
 
   // All other
   server.use(['/api', '/api/*'], (req, res) =>

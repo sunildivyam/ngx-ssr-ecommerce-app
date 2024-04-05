@@ -7,8 +7,10 @@
     ></anu-error>
     <anu-address-form
       *ngIf="address"
+      [loading]="loading"
       [value]="address"
       [isDefault]="isDefault"
+      [pincodeUrl]="pincodeUrl"
       class="container spacing-around-v"
       [instructionsOnly]="instructionsOnly"
       [saveBtnLabel]="isEditPage ? 'Update Address' : 'Add Address'"
