@@ -8,6 +8,10 @@ import { Profile } from '@annuadvent/ngx-core/helpers-auth';
 import { Subscription, filter } from 'rxjs';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Error } from '@annuadvent/ngx-common-ui/error';
+import {
+  GlobalConfigParamsEnum,
+  GlobalConfigService
+} from '@annuadvent/ngx-core/global-config';
 
 @Component({
   selector: 'app-profile-page',
@@ -23,13 +27,17 @@ export class ProfilePageComponent implements OnInit {
   isEditPage: boolean = false;
 
   constructor(
+    private gcService: GlobalConfigService,
     private profilePageService: ProfilePageService,
     private router: Router,
     private route: ActivatedRoute
   ) {
     // Subscribe Profile Params
-    this.profilePageService.profileParams.subscribe(
-      (pParams) => (this.profileParams = pParams)
+    this.gcService.config.subscribe(
+      () =>
+        (this.profileParams = this.gcService.getValue(
+          GlobalConfigParamsEnum.userProfileParams
+        ))
     );
 
     // Subscribe profile from page data
@@ -47,9 +55,7 @@ export class ProfilePageComponent implements OnInit {
       });
   }
 
-  ngOnInit(): void {
-    this.profilePageService.getProfileParams();
-  }
+  ngOnInit(): void {}
 
   private navigateBack(): void {
     const returnUrl = this.route.snapshot.queryParams?.returnUrl || '';

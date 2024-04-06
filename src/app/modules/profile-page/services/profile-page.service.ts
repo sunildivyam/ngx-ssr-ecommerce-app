@@ -17,25 +17,6 @@ export class ProfilePageService {
     return this.$profileParams.asObservable();
   }
 
-  public async getProfileParams(): Promise<FormConfigGroup> {
-    // List from cache
-    if (this.$profileParams.value && this.$profileParams.value.length) {
-      return this.$profileParams.value;
-    }
-
-    // profileParams from database
-    try {
-      const profileParams: any = await lastValueFrom(
-        this.http.get(URLS.PROFILE_PARAMS)
-      );
-      this.$profileParams.next(profileParams);
-      return profileParams;
-    } catch (error: any) {
-      this.$profileParams.next(null);
-      throw error;
-    }
-  }
-
   public async getProfile(id: string): Promise<Profile> {
     // get from database
     try {

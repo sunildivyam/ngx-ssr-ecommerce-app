@@ -3,6 +3,8 @@ import { AppStateService } from '../services/app-state.service';
 import { environment } from '../../../../environments/environment';
 import { FireCommonService } from '@annuadvent/ngx-tools/fire-common';
 import { APP_STATE_KEYS } from '../constants/app-state.constants';
+import { GlobalConfigService } from '@annuadvent/ngx-core/global-config';
+import { API_URLS } from '../../../constants/api-urls.constants';
 
 /**
  * A factory to provide application data, before the app starts, like app config, menu items etc.
@@ -17,7 +19,11 @@ export function appInit(
   appStateService: AppStateService,
   appConfigService: AppConfigService,
   fireCommonService: FireCommonService,
+  globalConfigService: GlobalConfigService
 ) {
+  // Sets Remote config (global) api url
+  globalConfigService.url = API_URLS.GLOBAL_CONFIG;
+
   // Sets app config from env or from db
   appConfigService.config = environment.appConfig;
 
@@ -26,8 +32,10 @@ export function appInit(
 
   // Sequential promises are needed here for navCategories. For other you can have parallel promises.
   const allPromises = Promise.all([
-    appStateService.setState(APP_STATE_KEYS.mainNavItems),
-  ])
+    // Fetches Remote config (global config)
+    globalConfigService.fetch(),
+    appStateService.setState(APP_STATE_KEYS.mainNavItems)
+  ]);
 
   return () => allPromises;
 }

@@ -6,12 +6,12 @@ import { AppComponent } from './components/app/app.component';
 import {
   ApiInterceptor,
   FireAuthModule,
-  FirebaseInterceptor,
+  FirebaseInterceptor
 } from '@annuadvent/ngx-tools/fire-auth';
 import { AppCoreModule, AppStateService, appInit } from './modules/app-core';
 import {
   AppConfigModule,
-  AppConfigService,
+  AppConfigService
 } from '@annuadvent/ngx-core/app-config';
 import { UtilsModule } from '@annuadvent/ngx-core/utils';
 import { FireCommonService } from '@annuadvent/ngx-tools/fire-common';
@@ -23,6 +23,7 @@ import { ThemeFontResizerModule } from '@annuadvent/ngx-common-ui/theme-font-res
 import { BreadcrumbModule } from '@annuadvent/ngx-common-ui/breadcrumb';
 import { SocialMediaModule } from '@annuadvent/ngx-common-ui/social-media';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { GlobalConfigService } from '@annuadvent/ngx-core/global-config';
 
 @NgModule({
   declarations: [AppComponent],
@@ -39,26 +40,31 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     UtilsModule,
     AppConfigModule,
     BreadcrumbModule,
-    SocialMediaModule,
+    SocialMediaModule
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: FirebaseInterceptor,
-      multi: true,
+      multi: true
     },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ApiInterceptor,
-      multi: true,
+      multi: true
     },
     {
       provide: APP_INITIALIZER,
       useFactory: appInit,
       multi: true,
-      deps: [AppStateService, AppConfigService, FireCommonService],
-    },
+      deps: [
+        AppStateService,
+        AppConfigService,
+        FireCommonService,
+        GlobalConfigService
+      ]
+    }
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}
