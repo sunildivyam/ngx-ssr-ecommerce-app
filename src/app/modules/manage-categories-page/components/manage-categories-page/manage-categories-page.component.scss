@@ -1,0 +1,9 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .categories-card {
+    max-width: calc(var(--anu-site-width) / 2);
+  }
+}

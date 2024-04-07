@@ -15,7 +15,8 @@ import {
   imagesRouter,
   sitemapRouter,
   usersRouter,
-  remoteConfigRouter
+  remoteConfigRouter,
+  categoriesRouter
 } from '@annuadvent/ngx-tools/fire-apis';
 
 // APIs Routers
@@ -71,6 +72,7 @@ export function app(): express.Express {
   server.use('/api/addresses', addressRouter);
   server.use('/api/users', usersRouter);
   server.use('/api/remote-config', remoteConfigRouter);
+  server.use('/api/categories', categoriesRouter);
 
   // All other
   server.use(['/api', '/api/*'], (req, res) =>
@@ -88,7 +90,7 @@ export function app(): express.Express {
   // ANGULAR ROUTES
 
   // Routes that skips server side rendering | APP_SPECIFIC
-  server.get(['/login', '/my', '/my/**'], (req, res) => {
+  server.get(['/login', '/my', '/my/**', '/admin', '/admin/**'], (req, res) => {
     res.sendFile(join(distFolder, `${indexHtml}`));
   });
 

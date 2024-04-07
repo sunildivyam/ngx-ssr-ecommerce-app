@@ -31,10 +31,10 @@ export class ProfilePageService {
     }
   }
 
-  public async addProfile(id: string, profile: Profile): Promise<Profile> {
+  public async addProfile(profile: Profile): Promise<Profile> {
     try {
       const result: any = await lastValueFrom(
-        this.http.post(`${URLS.ADD}/${id}`, profile)
+        this.http.post(`${URLS.ADD}`, profile)
       );
       const profileR = new Profile(result);
       return profileR;

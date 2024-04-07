@@ -12,6 +12,7 @@ import {
   GlobalConfigParamsEnum,
   GlobalConfigService
 } from '@annuadvent/ngx-core/global-config';
+import { FireAuthService } from '@annuadvent/ngx-tools/fire-auth';
 
 @Component({
   selector: 'app-profile-page',
@@ -30,7 +31,8 @@ export class ProfilePageComponent implements OnInit {
     private gcService: GlobalConfigService,
     private profilePageService: ProfilePageService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private authService: FireAuthService
   ) {
     // Subscribe Profile Params
     this.gcService.config.subscribe(
@@ -74,22 +76,33 @@ export class ProfilePageComponent implements OnInit {
   public onSubmit(value: Profile): void {
     this.loading = true;
     this.error = null;
+    // { ...value, id: this.authService.getCurrentUserId()}
     // Adds profile for user if does not exist already, else would just update
-    let saveFn = this.isEditPage
-      ? this.profilePageService.updateProfile
-      : this.profilePageService.addProfile;
-    saveFn = saveFn.bind(this.profilePageService);
-
-    saveFn(value.id, value)
-      .then((profile) => {
-        this.profile = profile;
-        this.loading = false;
-        this.navigateBack();
-      })
-      .catch((error) => {
-        this.loading = false;
-        this.error = { code: error.code, message: error.message };
-      });
+    if (this.isEditPage) {
+      this.profilePageService
+        .updateProfile(value.id, value)
+        .then((profile) => {
+          this.profile = profile;
+          this.loading = false;
+          this.navigateBack();
+        })
+        .catch((error) => {
+          this.loading = false;
+          this.error = { code: error.code, message: error.message };
+        });
+    } else {
+      this.profilePageService
+        .addProfile({ ...value, id: this.authService.getCurrentUserId() })
+        .then((profile) => {
+          this.profile = profile;
+          this.loading = false;
+          this.navigateBack();
+        })
+        .catch((error) => {
+          this.loading = false;
+          this.error = { code: error.code, message: error.message };
+        });
+    }
   }
 
   public onActionBtn(event: FormControlValue): void {

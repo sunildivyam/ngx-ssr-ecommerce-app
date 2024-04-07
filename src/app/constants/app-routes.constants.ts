@@ -27,6 +27,25 @@ export const routes: Routes = [
       }
     ]
   },
+  {
+    path: 'admin',
+    children: [
+      {
+        path: 'dashboard',
+        loadChildren: () =>
+          import('../modules/admin-dashboard-page').then(
+            (m) => m.AdminDashboardPageModule
+          )
+      },
+      {
+        path: 'categories',
+        loadChildren: () =>
+          import('../modules/manage-categories-page').then(
+            (m) => m.ManageCategoriesPageModule
+          )
+      }
+    ]
+  },
 
   {
     path: '**',

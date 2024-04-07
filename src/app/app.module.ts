@@ -23,7 +23,10 @@ import { ThemeFontResizerModule } from '@annuadvent/ngx-common-ui/theme-font-res
 import { BreadcrumbModule } from '@annuadvent/ngx-common-ui/breadcrumb';
 import { SocialMediaModule } from '@annuadvent/ngx-common-ui/social-media';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { GlobalConfigService } from '@annuadvent/ngx-core/global-config';
+import {
+  GlobalConfigModule,
+  GlobalConfigService
+} from '@annuadvent/ngx-core/global-config';
 
 @NgModule({
   declarations: [AppComponent],
@@ -40,7 +43,8 @@ import { GlobalConfigService } from '@annuadvent/ngx-core/global-config';
     UtilsModule,
     AppConfigModule,
     BreadcrumbModule,
-    SocialMediaModule
+    SocialMediaModule,
+    GlobalConfigModule
   ],
   providers: [
     {

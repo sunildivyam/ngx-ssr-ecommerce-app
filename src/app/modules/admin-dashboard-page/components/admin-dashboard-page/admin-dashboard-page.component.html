@@ -1,0 +1,27 @@
+<div class="flex-container">
+    <h1 class="col-12 left">Admin Dashboard</h1>
+</div>
+
+<div class="flex-container secondary-lighter-bg">
+    <div class="left col-12">
+        <p>Manage your App</p>
+    </div>
+</div>
+<div class="flex-container">
+    <div class="row">
+        <!--Categories-->
+        <anu-card class="col-sm-12 col-md-6 col-lg-4 shadow spacing" [routerLinkActive]="'active'">
+            <anu-card-title>
+                <h2>Categories</h2>
+            </anu-card-title>
+            <anu-card-body> Manage your categories. </anu-card-body>
+            <anu-card-footer>
+                <div class="row right">
+                    <a [routerLink]="['../categories']">Manage categories</a>
+                </div>
+            </anu-card-footer>
+        </anu-card>
+    </div>
+</div>
+
+<router-outlet #dashboardOutlet (activate)="onOutletActivated()"></router-outlet>

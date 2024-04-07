@@ -1,0 +1,20 @@
+<div class="flex-container">
+    <div class="container relative center">
+        <h1>Manage Categories</h1>
+        <anu-error *ngIf="error" [code]="error.code" [message]="error.message"></anu-error>
+
+        <div class="row">
+            <div class="hidden-sm col-md-4 col-lg-3">
+                <anu-categories-tree [value]="categories" [levels]="levels"></anu-categories-tree>
+            </div>
+            <div class="col-sm-12 col-md-8 col-lg-9">
+                <anu-manage-categories class="container spacing-around-v" [levels]="levels" [loading]="loading"
+                    [value]="categories" (addClicked)="onAdd($event)" (updateClicked)="onUpdate($event)"
+                    (deleteClicked)="onDelete($event)" (reloadClicked)="onReload()"></anu-manage-categories>
+            </div>
+            <div class="col-sm-12 hidden-md hidden-lg">
+                <anu-categories-tree [value]="categories" [levels]="levels"></anu-categories-tree>
+            </div>
+        </div>
+    </div>
+</div>
