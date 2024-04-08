@@ -2,20 +2,27 @@
   <anu-spinner id="app-spinner" [fullscreen]="true" [show]="appSpinner.isLoading" [mode]="SpinnerMode.Progress"
     size="md"></anu-spinner>
   <!-- App Header -->
+  <!--
   <anu-menu (onResizeMenu)="onMainMenuResize($event)" class="flex-container shadow" [items]="mainMenuItems"
     [logoUrl]="'/assets/annu-advent-logo.png'" [heading]="" [headingPrefix]="" [subHeading]=""
     (openStatusChanged)="mainMenuOpenStatusChanged($event)" [opened]="isMainNavOpen" [headingHref]="['./']"
     [headingPrefixHref]="['./']" [menuClassNames]="[]" [menuItemClassNames]="[
       'primary-normal-grad',
       'accent-deep-light',
-      'border-round',
+      'border-round-half',
+      'spacing-around-h',
+      'middle',
       'shadow'
     ]">
-    <anu-login-status (profileClicked)="loginStatusClicked()" (signOutClicked)="loginStatusClicked()"
-      (signInClicked)="loginStatusClicked()" [loginPageUrl]="appConfig.loginUrl || ''"
-      [profilePageUrl]="appConfig.profileUrl || ''" [loggedOutPageUrl]="appConfig.logoutUrl || ''">
-    </anu-login-status>
+
+  <anu-login-status (profileClicked)="loginStatusClicked()" (signOutClicked)="loginStatusClicked()"
+    (signInClicked)="loginStatusClicked()" [loginPageUrl]="appConfig.loginUrl || ''"
+    [profilePageUrl]="appConfig.profileUrl || ''" [loggedOutPageUrl]="appConfig.logoutUrl || ''">
+  </anu-login-status>
   </anu-menu>
+  -->
+  <anu-nested-nav [items]="mainMenuItems"></anu-nested-nav>
+
   <div class="flex-container center">
     <div class="row relative stretch">
       <div class="col-12">
@@ -26,6 +33,7 @@
   </div>
   <!-- App Content -->
   <div class="container center left" role="main">
+    <anu-error *ngIf="error" [code]="error?.code" [message]="error?.message"></anu-error>
     <router-outlet></router-outlet>
   </div>
 

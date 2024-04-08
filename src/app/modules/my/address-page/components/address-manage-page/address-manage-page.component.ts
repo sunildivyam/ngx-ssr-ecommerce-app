@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Address } from '@annuadvent/ngx-core/helpers-ecommerce';
 import { AddressPageService } from '../../services/address-page.service';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { Error } from '@annuadvent/ngx-common-ui/error';
+import { AppError } from '@annuadvent/ngx-common-ui/error';
 import { Subscription, filter } from 'rxjs';
 import { URLS } from '../../constants/api-urls.constants';
 
@@ -21,7 +21,7 @@ export class AddressManagePageComponent {
   isDefault: boolean = false;
   defaultAddress: Address = null;
   loading: boolean = false;
-  error: Error = null;
+  error: AppError = null;
   navigationEndSubscription: Subscription;
   instructionsOnly: false;
   pincodeUrl: string = URLS.PINCODE;

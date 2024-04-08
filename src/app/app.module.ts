@@ -27,6 +27,8 @@ import {
   GlobalConfigModule,
   GlobalConfigService
 } from '@annuadvent/ngx-core/global-config';
+import { NestedNavModule } from '@annuadvent/ngx-common-ui/nested-nav';
+import { ErrorModule } from '@annuadvent/ngx-common-ui/error';
 
 @NgModule({
   declarations: [AppComponent],
@@ -44,7 +46,9 @@ import {
     AppConfigModule,
     BreadcrumbModule,
     SocialMediaModule,
-    GlobalConfigModule
+    GlobalConfigModule,
+    NestedNavModule,
+    ErrorModule
   ],
   providers: [
     {

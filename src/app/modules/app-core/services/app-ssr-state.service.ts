@@ -3,25 +3,20 @@ import {
   Injectable,
   PLATFORM_ID,
   TransferState,
-  makeStateKey,
+  makeStateKey
 } from '@angular/core';
-import {
-  isPlatformBrowser,
-  isPlatformServer,
-} from '@angular/common';
+import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 import { UtilsService } from '@annuadvent/ngx-core/utils';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class AppSsrStateService {
-
-
   constructor(
     private transferState: TransferState,
     @Inject(PLATFORM_ID) private platformId: string,
-    private utilsService: UtilsService,
-  ) { }
+    private utilsService: UtilsService
+  ) {}
 
   public removeValue(key: string): void {
     const ssrKey = makeStateKey<any>(key);
@@ -33,12 +28,13 @@ export class AppSsrStateService {
   public getValue(key: string): any {
     const ssrKey = makeStateKey<any>(key);
     if (this.transferState.hasKey(ssrKey)) {
-      const value = this.utilsService.deepCopy(this.transferState.get(ssrKey, null));
+      const value = this.utilsService.deepCopy(
+        this.transferState.get(ssrKey, null)
+      );
       this.removeValue(key);
 
       return value;
     }
-
   }
 
   public setValue(key: string, value: any): void {

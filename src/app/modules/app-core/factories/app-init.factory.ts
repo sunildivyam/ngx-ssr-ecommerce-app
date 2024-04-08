@@ -32,9 +32,8 @@ export function appInit(
 
   // Sequential promises are needed here for navCategories. For other you can have parallel promises.
   const allPromises = Promise.all([
-    // Fetches Remote config (global config)
-    globalConfigService.fetch(),
-    appStateService.setState(APP_STATE_KEYS.mainNavItems)
+    appStateService.setState(APP_STATE_KEYS.globalConfig),
+    appStateService.setState(APP_STATE_KEYS.liveCategories)
   ]);
 
   return () => allPromises;

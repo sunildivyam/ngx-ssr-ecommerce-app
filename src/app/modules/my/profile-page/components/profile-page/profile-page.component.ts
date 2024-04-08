@@ -7,7 +7,7 @@ import { ProfilePageService } from '../../services/profile-page.service';
 import { Profile } from '@annuadvent/ngx-core/helpers-auth';
 import { Subscription, filter } from 'rxjs';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { Error } from '@annuadvent/ngx-common-ui/error';
+import { AppError } from '@annuadvent/ngx-common-ui/error';
 import {
   GlobalConfigParamsEnum,
   GlobalConfigService
@@ -23,7 +23,7 @@ export class ProfilePageComponent implements OnInit {
   profileParams: FormConfigGroup;
   profile = new Profile();
   loading: boolean = false;
-  error: Error = null;
+  error: AppError = null;
   navigationEndSubscription: Subscription;
   isEditPage: boolean = false;
 
