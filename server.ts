@@ -90,9 +90,22 @@ export function app(): express.Express {
   // ANGULAR ROUTES
 
   // Routes that skips server side rendering | APP_SPECIFIC
-  server.get(['/login', '/my', '/my/**', '/admin', '/admin/**'], (req, res) => {
-    res.sendFile(join(distFolder, `${indexHtml}`));
-  });
+  server.get(
+    [
+      '/login',
+      '/my',
+      '/my/**',
+      '/admin',
+      '/admin/**',
+      '/seller',
+      '/seller/**',
+      '/shop',
+      '/shop/**'
+    ],
+    (req, res) => {
+      res.sendFile(join(distFolder, `${indexHtml}`));
+    }
+  );
 
   // Our Universal express-engine (found @ https://github.com/angular/universal/tree/main/modules/express-engine)
   server.engine(

@@ -3,7 +3,7 @@ import { AppConfig } from '@annuadvent/ngx-core/app-config';
 export const appConfig: AppConfig = {
   name: 'ecommerce',
   copyrightText: 'copyright©ecommerce',
-  themeName: 'skyBlue',
+  themeName: 'pink',
   apiBaseUrl: 'http://localhost:4200',
   imagesSourceUrl: '/getImage?imageId=',
   loginUrl: '/login',

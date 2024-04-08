@@ -9,44 +9,24 @@ export const routes: Routes = [
   },
   {
     path: 'my',
-    children: [
-      {
-        path: 'dashboard',
-        loadChildren: () =>
-          import('../modules/dashboard').then((m) => m.DashboardModule)
-      },
-      {
-        path: 'addresses',
-        loadChildren: () =>
-          import('../modules/address-page').then((m) => m.AddressPageModule)
-      },
-      {
-        path: 'profile',
-        loadChildren: () =>
-          import('../modules/profile-page').then((m) => m.ProfilePageModule)
-      }
-    ]
+    loadChildren: () =>
+      import('../modules/my/my.module').then((m) => m.MyModule)
   },
   {
     path: 'admin',
-    children: [
-      {
-        path: 'dashboard',
-        loadChildren: () =>
-          import('../modules/admin-dashboard-page').then(
-            (m) => m.AdminDashboardPageModule
-          )
-      },
-      {
-        path: 'categories',
-        loadChildren: () =>
-          import('../modules/manage-categories-page').then(
-            (m) => m.ManageCategoriesPageModule
-          )
-      }
-    ]
+    loadChildren: () =>
+      import('../modules/admin/admin.module').then((m) => m.AdminModule)
   },
-
+  {
+    path: 'seller',
+    loadChildren: () =>
+      import('../modules/seller/seller.module').then((m) => m.SellerModule)
+  },
+  {
+    path: 'shop',
+    loadChildren: () =>
+      import('../modules/shop/shop.module').then((m) => m.ShopModule)
+  },
   {
     path: '**',
     redirectTo: '',
