@@ -1,31 +1,44 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ShopLandingPageComponent } from './components/shop-landing-page/shop-landing-page.component';
+import { categoriesResolver } from './resolvers/categories.resolver';
 
 const routes: Routes = [
   {
     path: '',
-    component: ShopLandingPageComponent
+    component: ShopLandingPageComponent,
+    runGuardsAndResolvers: 'always',
+    resolve: { categories: categoriesResolver }
   },
   {
     path: ':l1',
-    component: ShopLandingPageComponent // Only for L1 route, if cat's level=1, show L1CatHomePage
+    component: ShopLandingPageComponent, // Only for L1 route, if cat's level=1, show L1CatHomePage
+    runGuardsAndResolvers: 'always',
+    resolve: { categories: categoriesResolver }
   },
   {
     path: ':l1/:l2',
-    component: ShopLandingPageComponent
+    component: ShopLandingPageComponent,
+    runGuardsAndResolvers: 'always',
+    resolve: { categories: categoriesResolver }
   },
   {
     path: ':l1/:l2/:l3',
-    component: ShopLandingPageComponent
+    component: ShopLandingPageComponent,
+    runGuardsAndResolvers: 'always',
+    resolve: { categories: categoriesResolver }
   },
   {
     path: ':l1/:l2/:l3/:l4',
-    component: ShopLandingPageComponent
+    component: ShopLandingPageComponent,
+    runGuardsAndResolvers: 'always',
+    resolve: { categories: categoriesResolver }
   },
   {
     path: ':l1/:l2/:l3/:l4/:l5',
-    component: ShopLandingPageComponent
+    component: ShopLandingPageComponent,
+    runGuardsAndResolvers: 'always',
+    resolve: { categories: categoriesResolver }
   },
   {
     path: '**',

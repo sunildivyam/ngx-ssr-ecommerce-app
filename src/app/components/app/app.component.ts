@@ -27,7 +27,6 @@ export class AppComponent implements OnInit {
   SpinnerMode = SpinnerMode;
   themeFontSizes: Array<string> = ['12px', '16px', '20px'];
   socialMediaButtons: Array<SocialMediaButton> = [];
-  menuHeight: number = 0;
   error: AppError;
 
   constructor(
@@ -79,9 +78,5 @@ export class AppComponent implements OnInit {
         url: socialMeidaConfig[btn.id]
       };
     });
-  }
-
-  public onMainMenuResize(height: number): void {
-    this.zone.run(() => setTimeout(() => (this.menuHeight = height)));
   }
 }
