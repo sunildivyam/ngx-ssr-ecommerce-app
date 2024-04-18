@@ -11,7 +11,7 @@ import {
   SocialMediaButton
 } from '@annuadvent/ngx-common-ui/social-media';
 import { NavService } from '../../modules/app-core/services/nav.service';
-import { AppError } from '@annuadvent/ngx-common-ui/error';
+import { AppError } from '@annuadvent/ngx-core/app-error';
 import { AppErrorService } from '../../modules/app-core/services/app-error.service';
 
 @Component({

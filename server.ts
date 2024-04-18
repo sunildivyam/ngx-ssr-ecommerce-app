@@ -18,6 +18,7 @@ import {
   remoteConfigRouter,
   categoriesRouter
 } from '@annuadvent/ngx-tools/fire-apis';
+import { productsRouter } from '@annuadvent/ngx-tools/fire-apis/src/products/routers/products.router';
 
 // APIs Routers
 // import { usersRouter } from '@annuadvent/ngx-tools/fire-apis';
@@ -73,6 +74,7 @@ export function app(): express.Express {
   server.use('/api/users', usersRouter);
   server.use('/api/remote-config', remoteConfigRouter);
   server.use('/api/categories', categoriesRouter);
+  server.use('/api/products', productsRouter);
 
   // All other
   server.use(['/api', '/api/*'], (req, res) =>

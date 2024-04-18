@@ -1,1 +1,6 @@
-<p>inventory-page works!</p>
+<h1>MY INVENTORY</h1>
+<anu-product-thumb-list class="spacing" [itemClassNames]="['spacing-around']" [items]="myProducts"
+    [href]="'/seller/inventory/manage-product'" [actionLabel]="'Edit Product'" [enableAdd]="true"
+    (addClicked)="onAddClick($event)">
+
+</anu-product-thumb-list>

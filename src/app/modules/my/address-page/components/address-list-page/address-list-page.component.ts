@@ -3,7 +3,7 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { AddressPageService } from '../../services/address-page.service';
 import { Subscription, filter } from 'rxjs';
 import { Address } from '@annuadvent/ngx-core/helpers-ecommerce';
-import { AppError } from '@annuadvent/ngx-common-ui/error';
+import { AppError } from '@annuadvent/ngx-core/app-error';
 
 @Component({
   selector: 'app-address-list-page',

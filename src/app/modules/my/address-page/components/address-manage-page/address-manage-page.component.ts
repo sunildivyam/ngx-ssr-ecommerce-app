@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Address } from '@annuadvent/ngx-core/helpers-ecommerce';
 import { AddressPageService } from '../../services/address-page.service';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { AppError } from '@annuadvent/ngx-common-ui/error';
+import { AppError } from '@annuadvent/ngx-core/app-error';
 import { Subscription, filter } from 'rxjs';
 import { URLS } from '../../constants/api-urls.constants';
 

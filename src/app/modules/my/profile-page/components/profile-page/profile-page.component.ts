@@ -7,7 +7,7 @@ import { ProfilePageService } from '../../services/profile-page.service';
 import { Profile } from '@annuadvent/ngx-core/helpers-auth';
 import { Subscription, filter } from 'rxjs';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { AppError } from '@annuadvent/ngx-common-ui/error';
+import { AppError } from '@annuadvent/ngx-core/app-error';
 import {
   GlobalConfigParamsEnum,
   GlobalConfigService

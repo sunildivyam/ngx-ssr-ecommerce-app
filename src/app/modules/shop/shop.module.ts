@@ -14,12 +14,14 @@ import { DEFAULT_CATEGORY_IMAGE, DEFAULT_PRODUCT_IMAGE } from '../app-core';
 import { DEFAULT_PRODUCT_IMAGE_PROVIDER } from '@annuadvent/ngx-ecommerce/product-thumb';
 import { HelpersCategoriesModule } from '@annuadvent/ngx-core/helpers-categories';
 import { ProductThumbListModule } from '@annuadvent/ngx-ecommerce/product-thumb-list';
+import { ProductPageComponent } from './components/product-page/product-page.component';
 
 @NgModule({
   declarations: [
     ShopPageComponent,
     ShopLandingPageComponent,
-    ShopLevel1PageComponent
+    ShopLevel1PageComponent,
+    ProductPageComponent
   ],
   providers: [
     {

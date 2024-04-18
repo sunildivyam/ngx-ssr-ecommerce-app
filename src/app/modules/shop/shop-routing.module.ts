@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ShopLandingPageComponent } from './components/shop-landing-page/shop-landing-page.component';
 import { categoriesResolver } from './resolvers/categories.resolver';
+import { ProductPageComponent } from './components/product-page/product-page.component';
 
 const routes: Routes = [
   {
@@ -42,7 +43,7 @@ const routes: Routes = [
   },
   {
     path: 'product/:id',
-    component: ShopLandingPageComponent,
+    component: ProductPageComponent,
     runGuardsAndResolvers: 'always'
   },
   {

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { AppError } from '@annuadvent/ngx-common-ui/error';
+import { AppError } from '@annuadvent/ngx-core/app-error';
 import { Subscription, filter } from 'rxjs';
 import { ManageCategoriesPageService } from '../../services/manage-categories-page.service';
 import { Category } from '@annuadvent/ngx-core/helpers-categories';
