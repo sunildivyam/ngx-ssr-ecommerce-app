@@ -12,6 +12,8 @@ import {
 import { CategoryThumbListModule } from '@annuadvent/ngx-ecommerce/category-thumb-list';
 import { DEFAULT_CATEGORY_IMAGE, DEFAULT_PRODUCT_IMAGE } from '../app-core';
 import { DEFAULT_PRODUCT_IMAGE_PROVIDER } from '@annuadvent/ngx-ecommerce/product-thumb';
+import { HelpersCategoriesModule } from '@annuadvent/ngx-core/helpers-categories';
+import { ProductThumbListModule } from '@annuadvent/ngx-ecommerce/product-thumb-list';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { DEFAULT_PRODUCT_IMAGE_PROVIDER } from '@annuadvent/ngx-ecommerce/produc
     CommonModule,
     ShopRoutingModule,
     CategoryThumbModule,
-    CategoryThumbListModule
+    CategoryThumbListModule,
+    ProductThumbListModule,
+    HelpersCategoriesModule
   ]
 })
 export class ShopModule {}

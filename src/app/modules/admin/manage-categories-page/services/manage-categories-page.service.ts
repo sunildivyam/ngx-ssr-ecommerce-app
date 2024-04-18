@@ -9,6 +9,8 @@ import {
 } from '@annuadvent/ngx-core/global-config';
 import { UtilsService } from '@annuadvent/ngx-core/utils';
 import { API_URLS } from '../../../../constants/api-urls.constants';
+import { FireStorageImageService } from '@annuadvent/ngx-tools/fire-storage';
+import { ImageUpload } from '@annuadvent/ngx-common-ui/image-upload';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +22,8 @@ export class ManageCategoriesPageService {
   constructor(
     private http: HttpClient,
     private utilsService: UtilsService,
-    private gcService: GlobalConfigService
+    private gcService: GlobalConfigService,
+    private fireImageService: FireStorageImageService
   ) {
     this.gcService.config.subscribe((config) =>
       this.$categoryMaxLevels.next(
@@ -98,11 +101,31 @@ export class ManageCategoriesPageService {
     }
   }
 
-  public async deleteCategory(id: string): Promise<boolean> {
+  private getFileNameFromUrl(url: string): string {
+    const t1 = url.split('fileName=');
+    return t1[t1.length - 1];
+  }
+
+  public async deleteCategory(cat: Category): Promise<boolean> {
+    const { id, imageUrl } = cat;
+
     try {
       const result: any = await lastValueFrom(
         this.http.post(`${API_URLS.CATEGORIES.DELETE}/${id}`, {})
       );
+
+      if (imageUrl) {
+        const imgPath = `${this.gcService.getValue(
+          GlobalConfigParamsEnum.categoriesImagePath
+        )}/${cat.id}/${this.getFileNameFromUrl(imageUrl)}`;
+
+        try {
+          await this.fireImageService.deleteImageByPath(imgPath);
+        } catch (error) {
+          console.log(error);
+          // Do nothing
+        }
+      }
 
       this.$categories.next([
         ...this.$categories.value.filter((cat) => cat.id !== id)
@@ -110,6 +133,29 @@ export class ManageCategoriesPageService {
 
       return result.success;
     } catch (error: any) {
+      throw error;
+    }
+  }
+
+  public async updateImage(
+    category: Category,
+    imageInfo: ImageUpload
+  ): Promise<Category> {
+    const imgPath = `${this.gcService.getValue(
+      GlobalConfigParamsEnum.categoriesImagePath
+    )}/${category.id}/${imageInfo.fileName}`;
+
+    try {
+      await this.fireImageService.uploadImageByPath(
+        imgPath,
+        imageInfo.data,
+        true
+      );
+      category.imageUrl = imageInfo.fileName;
+
+      const updatedCategory = this.updateCategory(category.id, category);
+      return updatedCategory;
+    } catch (error) {
       throw error;
     }
   }

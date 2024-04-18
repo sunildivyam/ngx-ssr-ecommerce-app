@@ -1,7 +1,3 @@
-<h2>shop-landing-page works!</h2>
-<div *ngFor="let cat of paramCategories">
-    <span>{{cat.title}} ({{cat.level}}) => </span>
-</div>
 <!-- If L1 route param is category of level1 -->
 <app-shop-level1-page *ngIf="isCatL1" [value]="paramCategories[0]">
 
@@ -11,4 +7,4 @@
 <!-- If one or more Level routes, like L1, L2, L3, L4, L5 all or any are available-->
 <!-- QueryParams has filters too-->
 
-<app-shop-page *ngIf="!isCatL1"></app-shop-page>
+<app-shop-page *ngIf="!isCatL1" [categories]="paramCategories"></app-shop-page>

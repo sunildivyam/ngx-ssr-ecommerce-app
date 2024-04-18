@@ -4,6 +4,7 @@ import { AppError } from '@annuadvent/ngx-common-ui/error';
 import { Subscription, filter } from 'rxjs';
 import { ManageCategoriesPageService } from '../../services/manage-categories-page.service';
 import { Category } from '@annuadvent/ngx-core/helpers-categories';
+import { CategoryImageUpload } from '@annuadvent/ngx-common-ui/categories';
 
 @Component({
   selector: 'app-manage-categories-page',
@@ -77,6 +78,7 @@ export class ManageCategoriesPageComponent {
       this.loading = false;
     }
   }
+
   public async onUpdate(cat: Category) {
     this.error = null;
     this.loading = true;
@@ -92,12 +94,13 @@ export class ManageCategoriesPageComponent {
       this.loading = false;
     }
   }
+
   public async onDelete(cat: Category) {
     this.error = null;
     this.loading = true;
 
     try {
-      await this.pageService.deleteCategory(cat.id);
+      await this.pageService.deleteCategory(cat);
       this.loading = false;
     } catch (error) {
       this.error = {
@@ -109,6 +112,23 @@ export class ManageCategoriesPageComponent {
           this.error.message +
           `(References - ${error?.error?.references?.join(',')}) `;
       }
+      this.loading = false;
+    }
+  }
+
+  public async onImageUpload(value: CategoryImageUpload) {
+    this.error = null;
+    this.loading = true;
+    const { category, imageUpload } = value;
+
+    try {
+      await this.pageService.updateImage(category, imageUpload);
+      this.loading = false;
+    } catch (error) {
+      this.error = {
+        code: error.code,
+        message: error.message
+      };
       this.loading = false;
     }
   }

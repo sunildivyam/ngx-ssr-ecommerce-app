@@ -14,8 +14,6 @@ import {
 } from '@annuadvent/ngx-core/global-config';
 import { FireAuthService } from '@annuadvent/ngx-tools/fire-auth';
 import { BASIC_PROFILE_FORM_PARAMS } from '../../constants/basic-profile-params.constant';
-import { FireStorageImageService } from '@annuadvent/ngx-tools/fire-storage';
-import { AppConfigService } from '@annuadvent/ngx-core/app-config';
 import { ImageUpload } from '@annuadvent/ngx-common-ui/image-upload';
 import { AbstractControl } from '@angular/forms';
 
@@ -41,12 +39,18 @@ export class ProfilePageComponent implements OnInit {
     private authService: FireAuthService
   ) {
     // Subscribe Profile Params
-    this.gcService.config.subscribe(
-      () =>
-        (this.profileParams = this.gcService.getValue(
-          GlobalConfigParamsEnum.userProfileParams
-        ))
-    );
+    this.gcService.config.subscribe(() => {
+      this.profileParams = this.gcService.getValue(
+        GlobalConfigParamsEnum.userProfileParams
+      );
+
+      const dims = this.gcService.getValue(
+        GlobalConfigParamsEnum.profileImageDimensions
+      );
+      this.basicProfileParams[
+        'photoUrlImage'
+      ].helpText = `Allowed Image dimensions are width: ${dims.width}, height: ${dims.height} and a maximum file size of ${dims.size}kbs.`;
+    });
 
     // Subscribe profile from page data
     this.route.data.subscribe((data) => {
@@ -115,6 +119,7 @@ export class ProfilePageComponent implements OnInit {
     const { key, value, control } = event;
     switch (key) {
       case 'photoUrlImage':
+        control.markAsDirty();
         control.valid && this.changeProfileImage(value, control);
         break;
       case 'photoUrl':
@@ -133,21 +138,22 @@ export class ProfilePageComponent implements OnInit {
     value: ImageUpload,
     control: AbstractControl
   ): Promise<void> {
+    if (!value) return;
+
     this.loading = true;
     this.error = null;
-    value &&
-      this.profilePageService
-        .updateProfileImage(value)
-        .then((photoUrl) => {
-          this.profile = { ...this.profile, photoUrl };
-          this.loading = false;
-        })
-        .catch((error) => {
-          this.error = {
-            code: error?.code || error?.error?.code || '',
-            message: error?.message || error?.error?.message || error
-          };
-          this.loading = false;
-        });
+    this.profilePageService
+      .updateProfileImage(value)
+      .then((photoUrl) => {
+        this.profile = { ...this.profile, photoUrl };
+        this.loading = false;
+      })
+      .catch((error) => {
+        this.error = {
+          code: error?.code || error?.error?.code || '',
+          message: error?.message || error?.error?.message || error
+        };
+        this.loading = false;
+      });
   }
 }

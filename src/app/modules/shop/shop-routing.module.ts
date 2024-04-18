@@ -41,6 +41,11 @@ const routes: Routes = [
     resolve: { categories: categoriesResolver }
   },
   {
+    path: 'product/:id',
+    component: ShopLandingPageComponent,
+    runGuardsAndResolvers: 'always'
+  },
+  {
     path: '**',
     redirectTo: '',
     pathMatch: 'full'

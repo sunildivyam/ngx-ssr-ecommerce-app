@@ -77,13 +77,14 @@ export const BASIC_PROFILE_FORM_PARAMS = {
     "type": "Object",
     "controlType": "image",
     "value": null,
-    "label": "Profle Photo",
+    "label": "Profile Photo",
     "placeholder": "Profile Photo",
     "helpText": "",
     "syncValidators": [],
     "asyncValidators": [{name: 'ImageValidatorService', imageDimsName: 'profileImageDimensions'}],
     "list": [],
     "actionBtn": "Upload",
-    "disabled": false
+    "disabled": false,
+    "hidden": true
   }
 };

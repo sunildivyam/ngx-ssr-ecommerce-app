@@ -1,1 +1,8 @@
-<p>shop-page works!</p>
+Selected category Tree
+<span *ngFor="let cat of categories">
+    => <span>{{cat.title}}</span>
+</span>
+
+<h2>PRODUCT LIST</h2>
+<anu-product-thumb-list [items]="productList" [href]="'/shop/product'"
+    [itemClassNames]="['spacing-around']"></anu-product-thumb-list>

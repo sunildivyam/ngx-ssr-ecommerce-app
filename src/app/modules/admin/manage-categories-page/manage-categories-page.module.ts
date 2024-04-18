@@ -1,12 +1,12 @@
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
-import { ManageCategoriesPageRoutingModule } from "./manage-categories-page-routing.module";
-import { ManageCategoriesPageComponent } from "./components/manage-categories-page/manage-categories-page.component";
-import { ErrorModule } from "@annuadvent/ngx-common-ui/error";
+import { ManageCategoriesPageRoutingModule } from './manage-categories-page-routing.module';
+import { ManageCategoriesPageComponent } from './components/manage-categories-page/manage-categories-page.component';
+import { ErrorModule } from '@annuadvent/ngx-common-ui/error';
 
-import { HttpClientModule } from "@angular/common/http";
-import { CategoriesModule } from "@annuadvent/ngx-common-ui/categories";
+import { HttpClientModule } from '@angular/common/http';
+import { CategoriesModule } from '@annuadvent/ngx-common-ui/categories';
 
 @NgModule({
   declarations: [ManageCategoriesPageComponent],
@@ -15,7 +15,7 @@ import { CategoriesModule } from "@annuadvent/ngx-common-ui/categories";
     HttpClientModule,
     ManageCategoriesPageRoutingModule,
     ErrorModule,
-    CategoriesModule,
-  ],
+    CategoriesModule
+  ]
 })
 export class ManageCategoriesPageModule {}

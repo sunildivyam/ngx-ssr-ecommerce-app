@@ -1,2 +1,2 @@
-<anu-category-thumb [value]="value" [href]="'/shop'"></anu-category-thumb>
-<anu-category-thumb-list [items]="catList" [href]="'/shop'"></anu-category-thumb-list>
+<anu-category-thumb-list [items]="value | categorychildren : liveCategories" [href]="'/shop/'+ value.id"
+    [itemClassNames]="['spacing-around']"></anu-category-thumb-list>
