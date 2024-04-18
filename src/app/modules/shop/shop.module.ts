@@ -5,6 +5,13 @@ import { ShopRoutingModule } from './shop-routing.module';
 import { ShopPageComponent } from './components/shop-page/shop-page.component';
 import { ShopLandingPageComponent } from './components/shop-landing-page/shop-landing-page.component';
 import { ShopLevel1PageComponent } from './components/shop-level1-page/shop-level1-page.component';
+import {
+  CategoryThumbModule,
+  DEFAULT_CATEGORY_IMAGE_PROVIDER
+} from '@annuadvent/ngx-ecommerce/category-thumb';
+import { CategoryThumbListModule } from '@annuadvent/ngx-ecommerce/category-thumb-list';
+import { DEFAULT_CATEGORY_IMAGE, DEFAULT_PRODUCT_IMAGE } from '../app-core';
+import { DEFAULT_PRODUCT_IMAGE_PROVIDER } from '@annuadvent/ngx-ecommerce/product-thumb';
 
 @NgModule({
   declarations: [
@@ -12,6 +19,21 @@ import { ShopLevel1PageComponent } from './components/shop-level1-page/shop-leve
     ShopLandingPageComponent,
     ShopLevel1PageComponent
   ],
-  imports: [CommonModule, ShopRoutingModule]
+  providers: [
+    {
+      provide: DEFAULT_CATEGORY_IMAGE_PROVIDER,
+      useValue: DEFAULT_CATEGORY_IMAGE
+    },
+    {
+      provide: DEFAULT_PRODUCT_IMAGE_PROVIDER,
+      useValue: DEFAULT_PRODUCT_IMAGE
+    }
+  ],
+  imports: [
+    CommonModule,
+    ShopRoutingModule,
+    CategoryThumbModule,
+    CategoryThumbListModule
+  ]
 })
 export class ShopModule {}

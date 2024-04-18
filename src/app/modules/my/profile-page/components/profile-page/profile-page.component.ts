@@ -13,6 +13,11 @@ import {
   GlobalConfigService
 } from '@annuadvent/ngx-core/global-config';
 import { FireAuthService } from '@annuadvent/ngx-tools/fire-auth';
+import { BASIC_PROFILE_FORM_PARAMS } from '../../constants/basic-profile-params.constant';
+import { FireStorageImageService } from '@annuadvent/ngx-tools/fire-storage';
+import { AppConfigService } from '@annuadvent/ngx-core/app-config';
+import { ImageUpload } from '@annuadvent/ngx-common-ui/image-upload';
+import { AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'app-profile-page',
@@ -21,6 +26,7 @@ import { FireAuthService } from '@annuadvent/ngx-tools/fire-auth';
 })
 export class ProfilePageComponent implements OnInit {
   profileParams: FormConfigGroup;
+  basicProfileParams: FormConfigGroup = { ...BASIC_PROFILE_FORM_PARAMS };
   profile = new Profile();
   loading: boolean = false;
   error: AppError = null;
@@ -106,14 +112,42 @@ export class ProfilePageComponent implements OnInit {
   }
 
   public onActionBtn(event: FormControlValue): void {
-    switch (event.key) {
+    const { key, value, control } = event;
+    switch (key) {
+      case 'photoUrlImage':
+        control.valid && this.changeProfileImage(value, control);
+        break;
       case 'photoUrl':
-        // Show Image modal to change Image
+        // Show/hide Image Upload to change Image
+        this.basicProfileParams['photoUrlImage'].hidden =
+          !this.basicProfileParams['photoUrlImage'].hidden;
         break;
       case 'defaultAddressId':
         // Show Address List and set default address
         break;
       default:
     }
+  }
+
+  private async changeProfileImage(
+    value: ImageUpload,
+    control: AbstractControl
+  ): Promise<void> {
+    this.loading = true;
+    this.error = null;
+    value &&
+      this.profilePageService
+        .updateProfileImage(value)
+        .then((photoUrl) => {
+          this.profile = { ...this.profile, photoUrl };
+          this.loading = false;
+        })
+        .catch((error) => {
+          this.error = {
+            code: error?.code || error?.error?.code || '',
+            message: error?.message || error?.error?.message || error
+          };
+          this.loading = false;
+        });
   }
 }

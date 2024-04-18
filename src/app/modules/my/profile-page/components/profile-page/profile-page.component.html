@@ -1,23 +1,22 @@
 <div class="flex-container">
   <div class="profile-card container relative shadow spacing spacing-around-v">
-    <anu-error
-      *ngIf="error"
-      [code]="error?.code"
-      [message]="error?.message"
-    ></anu-error>
-
-    <anu-dynamic-form
-      class="container"
-      [params]="profileParams"
-      [value]="profile"
-      [loading]="loading"
-      [saveBtnLabel]="'Update profile'"
-      [cancelBtnLabel]="'Go back'"
-      (cancelClicked)="onCancel($event)"
-      (submitClicked)="onSubmit($event)"
-      (actionBtnClicked)="onActionBtn($event)"
-    >
+    <h1>My Profile</h1>
+    <anu-error *ngIf="error" [code]="error?.code" [message]="error?.message"></anu-error>
+    <!-- Basic Profile -->
+    <anu-dynamic-form class="container" [params]="basicProfileParams" [value]="profile" [loading]="loading"
+      [enableSaveBtn]="false" [enableCancelBtn]="false" (actionBtnClicked)="onActionBtn($event)">
     </anu-dynamic-form>
+
+    <anu-collapsible [collapsed]="true" [hamBurgerClassNames]="[' size-md']" [isDropdownStyle]="true">
+      <anu-collapsible-header>Additional Profile information</anu-collapsible-header>
+      <anu-collapsible-content>
+        <anu-dynamic-form class="container" [params]="profileParams" [value]="profile" [loading]="loading"
+          [saveBtnLabel]="'Update profile'" [cancelBtnLabel]="'Go back'" (cancelClicked)="onCancel($event)"
+          (submitClicked)="onSubmit($event)" (actionBtnClicked)="onActionBtn($event)">
+        </anu-dynamic-form>
+      </anu-collapsible-content>
+    </anu-collapsible>
+
 
     <anu-spinner [show]="loading"></anu-spinner>
   </div>

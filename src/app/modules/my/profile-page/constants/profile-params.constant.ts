@@ -1,3 +1,8 @@
+/**
+ * Profile params are usally taken from firebase remote config
+ * And should be saved to user-profiles tables
+ */
+
 // prettier-ignore
 export const PROFILE_FORM_PARAMS = {
   "id": {
@@ -5,56 +10,6 @@ export const PROFILE_FORM_PARAMS = {
     "controlType": "text",
     "disabled": true,
     "hidden": true
-  },
-  "displayName": {
-    "type": "string",
-    "controlType": "text",
-    "value": "",
-    "label": "Display Name",
-    "placeholder": "Display Name",
-    "helpText": "",
-    "syncValidators": [
-      { "name": "required" },
-      { "name": "trimSpacesValidator" },
-      { "name": "maxLength", "params": [100] }
-    ],
-    "asyncValidators": [],
-    "list": [],
-    "disabled": false
-  },
-  "email": {
-    "type": "string",
-    "controlType": "email",
-    "value": "",
-    "label": "Email",
-    "placeholder": "Email",
-    "helpText": "",
-    "syncValidators": [
-      { "name": "required" },
-      { "name": "email" },
-      { "name": "trimSpacesValidator" },
-      { "name": "maxLength", "params": [100] }
-    ],
-    "asyncValidators": [],
-    "list": [],
-    "disabled": false
-  },
-  "photoUrl": {
-    "type": "string",
-    "controlType": "text",
-    "value": "",
-    "label": "Profle Photo",
-    "placeholder": "Profile Photo",
-    "helpText": "",
-    "syncValidators": [
-      { "name": "trimSpacesValidator" },
-      { "name": "maxLength", "params": [500] }
-    ],
-    "asyncValidators": [],
-    "list": [],
-    "actionBtn": "Change",
-    "disabled": false
-
   },
   "gender": {
     "type": "string",
@@ -69,7 +24,8 @@ export const PROFILE_FORM_PARAMS = {
       {
         "key": "Male",
         "value": "Male"
-      }, {
+      },
+      {
         "key": "Female",
         "value": "Female"
       }
@@ -92,6 +48,21 @@ export const PROFILE_FORM_PARAMS = {
     "list": [],
     "disabled": false
   },
+  "bio": {
+    "type": "string",
+    "controlType": "textarea",
+    "value": "",
+    "label": "Bio",
+    "placeholder": "Profile overview",
+    "helpText": "",
+    "syncValidators": [
+      { "name": "trimSpacesValidator" },
+      { "name": "maxLength", "params": [300] }
+    ],
+    "asyncValidators": [],
+    "list": [],
+    "disabled": false
+  },
   "defaultAddressId": {
     "type": "string",
     "controlType": "text",
@@ -109,22 +80,6 @@ export const PROFILE_FORM_PARAMS = {
     "actionBtn": "Choose",
     "disabled": false
   },
-  "phone": {
-    "type": "string",
-    "controlType": "text",
-    "value": "",
-    "label": "Mobile phone",
-    "placeholder": "Mobile number",
-    "helpText": "(do not prefix country code)",
-    "syncValidators": [
-      { "name": "required" },
-      { "name": "trimSpacesValidator" },
-      { "name": "indiaMobileValidator" }
-    ],
-    "asyncValidators": [],
-    "list": [],
-    "disabled": false
-  },
   "createTime": {
     "type": "string",
     "controlType": "text",
@@ -136,20 +91,5 @@ export const PROFILE_FORM_PARAMS = {
     "controlType": "text",
     "disabled": true,
     "hidden": true
-  },
-  "bio": {
-    "type": "string",
-    "controlType": "textarea",
-    "value": "",
-    "label": "Bio",
-    "placeholder": "Profile overview",
-    "helpText": "",
-    "syncValidators": [
-      { "name": "trimSpacesValidator" },
-      { "name": "maxLength", "params": [300] }
-    ],
-    "asyncValidators": [],
-    "list": [],
-    "disabled": false
   }
 };

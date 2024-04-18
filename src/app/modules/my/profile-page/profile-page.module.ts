@@ -10,6 +10,7 @@ import { ErrorModule } from '@annuadvent/ngx-common-ui/error';
 import { UtilsModule } from '@annuadvent/ngx-core/utils';
 import { HttpClientModule } from '@angular/common/http';
 import { ProfilePageService } from './services/profile-page.service';
+import { CollapsibleModule } from '@annuadvent/ngx-common-ui/collapsible';
 
 @NgModule({
   declarations: [ProfilePageComponent],
@@ -22,7 +23,8 @@ import { ProfilePageService } from './services/profile-page.service';
     ReactiveFormModule,
     SpinnerModule,
     ErrorModule,
-    UtilsModule
+    UtilsModule,
+    CollapsibleModule
   ],
   exports: [ProfilePageComponent]
 })

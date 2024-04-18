@@ -4,14 +4,35 @@ import { FormConfigGroup } from '@annuadvent/ngx-core/helpers-forms';
 import { BehaviorSubject, Observable, lastValueFrom } from 'rxjs';
 import { URLS } from '../constants/api-urls.constant';
 import { Profile } from '@annuadvent/ngx-core/helpers-auth';
+import { ImageUpload } from '@annuadvent/ngx-common-ui/image-upload';
+import { FireAuthService } from '@annuadvent/ngx-tools/fire-auth';
+import { FireStorageImageService } from '@annuadvent/ngx-tools/fire-storage';
+import { AppConfigService } from '@annuadvent/ngx-core/app-config';
+import {
+  GlobalConfigParamsEnum,
+  GlobalConfigService
+} from '@annuadvent/ngx-core/global-config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfilePageService {
   private $profileParams = new BehaviorSubject<FormConfigGroup>(null);
+  private $profileImageStoragePath = '';
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private authService: FireAuthService,
+    private fireImageService: FireStorageImageService,
+    private configService: AppConfigService,
+    private gcService: GlobalConfigService
+  ) {
+    this.gcService.config.subscribe(() => {
+      this.$profileImageStoragePath = this.gcService.getValue(
+        GlobalConfigParamsEnum.userImagePath
+      );
+    });
+  }
 
   public get profileParams(): Observable<FormConfigGroup> {
     return this.$profileParams.asObservable();
@@ -62,6 +83,41 @@ export class ProfilePageService {
       );
 
       return result.success;
+    } catch (error: any) {
+      throw error;
+    }
+  }
+
+  public async updateProfilePhotoUrl(
+    uid: string,
+    photoUrl: string
+  ): Promise<string> {
+    try {
+      const result: any = await lastValueFrom(
+        this.http.post(`${URLS.UPDATE_PHOTOURL}/${uid}`, { photoUrl })
+      );
+
+      return photoUrl;
+    } catch (error: any) {
+      throw error;
+    }
+  }
+
+  public async updateProfileImage(imageInfo: ImageUpload): Promise<string> {
+    const uid = this.authService.getCurrentUserId();
+    const imgPath = `${this.$profileImageStoragePath}/${uid}/${imageInfo.fileName}`;
+    const photoUrl = `${this.configService.config.apiBaseUrl}/api/images/profile/${uid}?fileName=${imageInfo.fileName}`;
+
+    try {
+      await this.fireImageService.uploadImageByPath(
+        imgPath,
+        imageInfo.data,
+        true
+      );
+
+      await this.updateProfilePhotoUrl(uid, photoUrl);
+
+      return photoUrl;
     } catch (error: any) {
       throw error;
     }

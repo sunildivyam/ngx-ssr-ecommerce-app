@@ -4,6 +4,12 @@ import { APP_STATE_KEYS, AppStateService } from '../../app-core';
 import { Category } from '@annuadvent/ngx-core/helpers-categories';
 import { Observable } from 'rxjs';
 
+/**
+ *
+ * @param route Categories matched in route params
+ * @param state
+ * @returns
+ */
 export const categoriesResolver: ResolveFn<Array<Category>> = (
   route,
   state

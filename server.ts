@@ -67,7 +67,7 @@ export function app(): express.Express {
   // REST Express API endpoints
   // Add custom APIs | APP_SPECIFIC
 
-  server.use('/images', imagesRouter);
+  server.use('/api/images', imagesRouter);
   server.use('/sitemap.xml', sitemapRouter);
   server.use('/api/addresses', addressRouter);
   server.use('/api/users', usersRouter);
