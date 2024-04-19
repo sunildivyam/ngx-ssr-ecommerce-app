@@ -1,6 +1,6 @@
 <div class="flex-container">
     <h1>MY INVENTORY</h1>
-    <anu-product-thumb-list class="container spacing" [itemClassNames]="['spacing-around']"
+    <anu-product-thumb-list class="container spacing" [itemClassNames]="['col-sm-12', 'col-md-4', 'col-lg-2']"
         [items]="ipS.myProducts | async" [href]="'/seller/inventory/manage-product'" [actionLabel]="'Edit Product'"
         [enableAdd]="true" (addClicked)="onAddClick($event)">
 

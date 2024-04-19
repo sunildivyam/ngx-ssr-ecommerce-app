@@ -7,7 +7,6 @@ import { OrdersModule } from './orders/orders.module';
 import { InventoryModule } from './inventory/inventory.module';
 import { ProfileModule } from './profile/profile.module';
 
-
 @NgModule({
   declarations: [],
   imports: [
@@ -19,4 +18,4 @@ import { ProfileModule } from './profile/profile.module';
     ProfileModule
   ]
 })
-export class SellerModule { }
+export class SellerModule {}
