@@ -10,6 +10,9 @@ import {
   ManageProductModule
 } from '@annuadvent/ngx-ecommerce/manage-product';
 import { API_URLS } from './constants/api-urls.constants';
+import { HttpClientModule } from '@angular/common/http';
+import { DEFAULT_PRODUCT_IMAGE_PROVIDER } from '@annuadvent/ngx-ecommerce/product-thumb';
+import { DEFAULT_PRODUCT_IMAGE } from '../../app-core/constants/app-core.constants';
 
 @NgModule({
   declarations: [InventoryPageComponent, ManageProductPageComponent],
@@ -17,10 +20,15 @@ import { API_URLS } from './constants/api-urls.constants';
     {
       provide: MANAGE_PRODUCT_API_URLS_PROVIDER,
       useValue: API_URLS
+    },
+    {
+      provide: DEFAULT_PRODUCT_IMAGE_PROVIDER,
+      useValue: DEFAULT_PRODUCT_IMAGE
     }
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
     InventoryRoutingModule,
     ProductThumbListModule,
     ManageProductModule
