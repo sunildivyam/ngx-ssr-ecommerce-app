@@ -151,6 +151,15 @@ export class ManageCategoriesPageService {
         imageInfo.data,
         true
       );
+
+      // Delete Existing image
+      if (category.imageUrl) {
+        const imgPath = `${this.gcService.getValue(
+          GlobalConfigParamsEnum.categoriesImagePath
+        )}/${category.id}/${category.imageUrl}`;
+        await this.fireImageService.deleteImageByPath(imgPath);
+      }
+
       category.imageUrl = imageInfo.fileName;
 
       const updatedCategory = this.updateCategory(category.id, category);
