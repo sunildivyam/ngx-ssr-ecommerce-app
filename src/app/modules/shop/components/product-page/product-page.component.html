@@ -1,1 +1,6 @@
-<p>product-page works!</p>
+<div class="flex-container">
+
+    <anu-error *ngIf="error" [code]="error?.code" [message]="error?.message"></anu-error>
+    <anu-product-detail class="row" [product]="product" [loading]="loading"></anu-product-detail>
+
+</div>

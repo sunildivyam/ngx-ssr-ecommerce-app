@@ -6,5 +6,12 @@ export const API_URLS = {
     UPDATE: '/api/categories/update',
     DELETE: '/api/categories/delete',
     LIST: '/api/categories/list' // Live categories
+  },
+  PRODUCTS: {
+    ALL: '/api/products',
+    ADD: '/api/products/add',
+    UPDATE: '/api/products/update',
+    DELETE: '/api/products/delete',
+    LIST: '/api/products/list' // Live products
   }
 };

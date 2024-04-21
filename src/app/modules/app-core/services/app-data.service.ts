@@ -3,6 +3,8 @@ import { APP_STATE_KEYS } from '../constants/app-state.constants';
 import { GlobalConfigService } from '@annuadvent/ngx-core/global-config';
 import { CategoriesService } from './categories.service';
 import { AppErrorService } from './app-error.service';
+import { AppStateParams } from '../interfaces/app-state.interface';
+import { ProductQueryService } from './product-query.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +13,7 @@ export class AppDataService {
   constructor(
     private globalConfigService: GlobalConfigService,
     private categoriesService: CategoriesService,
+    private productsQueryService: ProductQueryService,
     private errorService: AppErrorService
   ) {}
 
@@ -23,6 +26,9 @@ export class AppDataService {
         break;
       case APP_STATE_KEYS.liveCategories:
         value = await this.getLiveCategories();
+        break;
+      case APP_STATE_KEYS.productListForShop:
+        value = await this.getProductListForShop(params);
         break;
       // case APP_STATE_KEYS.somestateKey:
       //   value = await this.getValueForSomeStateKey(params);
@@ -46,6 +52,15 @@ export class AppDataService {
       this.errorService.error = error;
       return null;
     });
+  }
+
+  public async getProductListForShop(params: AppStateParams): Promise<any> {
+    return await this.productsQueryService
+      .getProducts(params.categoryIds, true)
+      .catch((error) => {
+        this.errorService.error = error;
+        return null;
+      });
   }
 
   // This is the sample pattern to follow to get and serve data.

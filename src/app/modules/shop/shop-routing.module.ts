@@ -12,6 +12,11 @@ const routes: Routes = [
     resolve: { categories: categoriesResolver }
   },
   {
+    path: 'product/:id',
+    component: ProductPageComponent,
+    runGuardsAndResolvers: 'always'
+  },
+  {
     path: ':l1',
     component: ShopLandingPageComponent, // Only for L1 route, if cat's level=1, show L1CatHomePage
     runGuardsAndResolvers: 'always',
@@ -40,11 +45,6 @@ const routes: Routes = [
     component: ShopLandingPageComponent,
     runGuardsAndResolvers: 'always',
     resolve: { categories: categoriesResolver }
-  },
-  {
-    path: 'product/:id',
-    component: ProductPageComponent,
-    runGuardsAndResolvers: 'always'
   },
   {
     path: '**',
