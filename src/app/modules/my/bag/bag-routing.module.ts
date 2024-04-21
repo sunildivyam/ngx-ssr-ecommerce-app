@@ -6,6 +6,11 @@ const routes: Routes = [
   {
     path: '',
     component: BagPageComponent
+  },
+  {
+    path: '**',
+    redirectTo: '',
+    pathMatch: 'full'
   }
 ];
 

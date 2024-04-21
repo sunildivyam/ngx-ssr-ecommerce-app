@@ -6,6 +6,11 @@ const routes: Routes = [
   {
     path: '',
     component: WishlistPageComponent
+  },
+  {
+    path: '**',
+    redirectTo: '',
+    pathMatch: 'full'
   }
 ];
 
