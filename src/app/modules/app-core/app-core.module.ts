@@ -13,7 +13,6 @@ import { UtilsModule } from '@annuadvent/ngx-core/utils';
 import { SitemapComponent } from './components/sitemap/sitemap.component';
 import { FireCommonModule } from '@annuadvent/ngx-tools/fire-common';
 
-
 @NgModule({
   declarations: [LoginComponent, ContactUsComponent, SitemapComponent],
   imports: [
@@ -25,8 +24,8 @@ import { FireCommonModule } from '@annuadvent/ngx-tools/fire-common';
     ModalModule,
     FireStorageModule,
     UtilsModule,
-    FireCommonModule,
+    FireCommonModule
   ],
-  exports: [LoginComponent, ContactUsComponent, SitemapComponent],
+  exports: [LoginComponent, ContactUsComponent, SitemapComponent]
 })
-export class AppCoreModule { }
+export class AppCoreModule {}

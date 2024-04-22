@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { AppError } from '@annuadvent/ngx-core/app-error';
-import { Product } from '@annuadvent/ngx-core/helpers-ecommerce';
-import { ProductQueryService } from '../../../app-core/services/product-query.service';
+import {
+  Product,
+  ProductQueryService
+} from '@annuadvent/ngx-core/helpers-ecommerce';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({

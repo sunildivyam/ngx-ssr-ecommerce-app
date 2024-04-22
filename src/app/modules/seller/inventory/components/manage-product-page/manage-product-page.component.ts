@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 import { APP_STATE_KEYS, AppStateService } from '../../../../app-core';
-import { ManageProductService } from '@annuadvent/ngx-ecommerce/manage-product';
 import {
-  ActivatedRoute,
-  ActivatedRouteSnapshot,
-  Params
-} from '@angular/router';
-import { InventoryPageService } from '../../services/inventory-page.service';
+  InventoryService,
+  ManageProductService
+} from '@annuadvent/ngx-ecommerce/manage-product';
+import { ActivatedRoute, Params } from '@angular/router';
+
 import { Product } from '@annuadvent/ngx-core/helpers-ecommerce';
 
 @Component({
@@ -18,7 +17,7 @@ export class ManageProductPageComponent {
   constructor(
     private appStateService: AppStateService,
     private mpS: ManageProductService,
-    private ipS: InventoryPageService,
+    private ipS: InventoryService,
     private route: ActivatedRoute
   ) {
     this.appStateService.appState.subscribe((state) => {

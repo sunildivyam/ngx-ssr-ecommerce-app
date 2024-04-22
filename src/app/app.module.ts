@@ -8,7 +8,13 @@ import {
   FireAuthModule,
   FirebaseInterceptor
 } from '@annuadvent/ngx-tools/fire-auth';
-import { AppCoreModule, AppStateService, appInit } from './modules/app-core';
+import {
+  AppCoreModule,
+  AppStateService,
+  DEFAULT_CATEGORY_IMAGE,
+  DEFAULT_PRODUCT_IMAGE,
+  appInit
+} from './modules/app-core';
 import {
   AppConfigModule,
   AppConfigService
@@ -29,6 +35,9 @@ import {
 } from '@annuadvent/ngx-core/global-config';
 import { NestedNavModule } from '@annuadvent/ngx-common-ui/nested-nav';
 import { ErrorModule } from '@annuadvent/ngx-common-ui/error';
+import { API_URLS } from './constants/api-urls.constants';
+import { DEFAULT_PRODUCT_IMAGE_PROVIDER } from '@annuadvent/ngx-ecommerce/product-thumb';
+import { DEFAULT_CATEGORY_IMAGE_PROVIDER } from '@annuadvent/ngx-ecommerce/category-thumb';
 
 @NgModule({
   declarations: [AppComponent],
@@ -71,6 +80,18 @@ import { ErrorModule } from '@annuadvent/ngx-common-ui/error';
         FireCommonService,
         GlobalConfigService
       ]
+    },
+    {
+      provide: 'API_URLS',
+      useValue: API_URLS
+    },
+    {
+      provide: DEFAULT_PRODUCT_IMAGE_PROVIDER,
+      useValue: DEFAULT_PRODUCT_IMAGE
+    },
+    {
+      provide: DEFAULT_CATEGORY_IMAGE_PROVIDER,
+      useValue: DEFAULT_CATEGORY_IMAGE
     }
   ],
   bootstrap: [AppComponent]

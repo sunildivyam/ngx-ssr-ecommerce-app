@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { Category } from '@annuadvent/ngx-core/helpers-categories';
 import { BehaviorSubject, Observable, lastValueFrom } from 'rxjs';
 
@@ -8,7 +8,6 @@ import {
   GlobalConfigService
 } from '@annuadvent/ngx-core/global-config';
 import { UtilsService } from '@annuadvent/ngx-core/utils';
-import { API_URLS } from '../../../../constants/api-urls.constants';
 import { FireStorageImageService } from '@annuadvent/ngx-tools/fire-storage';
 import { ImageUpload } from '@annuadvent/ngx-common-ui/image-upload';
 
@@ -23,7 +22,8 @@ export class ManageCategoriesPageService {
     private http: HttpClient,
     private utilsService: UtilsService,
     private gcService: GlobalConfigService,
-    private fireImageService: FireStorageImageService
+    private fireImageService: FireStorageImageService,
+    @Inject('API_URLS') private API_URLS: any
   ) {
     this.gcService.config.subscribe((config) =>
       this.$categoryMaxLevels.next(
@@ -48,7 +48,7 @@ export class ManageCategoriesPageService {
 
     try {
       const categoryR: any = await lastValueFrom(
-        this.http.get(`${API_URLS.CATEGORIES.ALL}`)
+        this.http.get(`${this.API_URLS.CATEGORIES.ALL}`)
       );
 
       const categories = categoryR.map((cat) => new Category(cat));
@@ -67,7 +67,7 @@ export class ManageCategoriesPageService {
 
     try {
       const result: any = await lastValueFrom(
-        this.http.post(`${API_URLS.CATEGORIES.ADD}`, category)
+        this.http.post(`${this.API_URLS.CATEGORIES.ADD}`, category)
       );
 
       const categoryR = new Category(result);
@@ -85,7 +85,7 @@ export class ManageCategoriesPageService {
   ): Promise<Category> {
     try {
       const result: any = await lastValueFrom(
-        this.http.post(`${API_URLS.CATEGORIES.UPDATE}/${id}`, category)
+        this.http.post(`${this.API_URLS.CATEGORIES.UPDATE}/${id}`, category)
       );
       const categoryR = new Category(result);
 
@@ -111,7 +111,7 @@ export class ManageCategoriesPageService {
 
     try {
       const result: any = await lastValueFrom(
-        this.http.post(`${API_URLS.CATEGORIES.DELETE}/${id}`, {})
+        this.http.post(`${this.API_URLS.CATEGORIES.DELETE}/${id}`, {})
       );
 
       if (imageUrl) {

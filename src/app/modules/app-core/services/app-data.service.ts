@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { APP_STATE_KEYS } from '../constants/app-state.constants';
 import { GlobalConfigService } from '@annuadvent/ngx-core/global-config';
-import { CategoriesService } from './categories.service';
 import { AppErrorService } from './app-error.service';
 import { AppStateParams } from '../interfaces/app-state.interface';
-import { ProductQueryService } from './product-query.service';
+import { ProductQueryService } from '@annuadvent/ngx-core/helpers-ecommerce';
+import { CategoriesQueryService } from '@annuadvent/ngx-core/helpers-categories';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ import { ProductQueryService } from './product-query.service';
 export class AppDataService {
   constructor(
     private globalConfigService: GlobalConfigService,
-    private categoriesService: CategoriesService,
+    private catQueryService: CategoriesQueryService,
     private productsQueryService: ProductQueryService,
     private errorService: AppErrorService
   ) {}
@@ -48,7 +48,7 @@ export class AppDataService {
   }
 
   public async getLiveCategories(): Promise<any> {
-    return await this.categoriesService.getCategories().catch((error) => {
+    return await this.catQueryService.getCategories().catch((error) => {
       this.errorService.error = error;
       return null;
     });
@@ -56,7 +56,7 @@ export class AppDataService {
 
   public async getProductListForShop(params: AppStateParams): Promise<any> {
     return await this.productsQueryService
-      .getProducts(params.categoryIds, true)
+      .getProductsByCategories(params.categoryIds, true)
       .catch((error) => {
         this.errorService.error = error;
         return null;

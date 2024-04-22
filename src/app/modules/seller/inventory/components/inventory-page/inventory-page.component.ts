@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from '@annuadvent/ngx-core/helpers-ecommerce';
-import { InventoryPageService } from '../../services/inventory-page.service';
+import { InventoryService } from '@annuadvent/ngx-ecommerce/manage-product';
 
 @Component({
   selector: 'app-inventory-page',
@@ -11,7 +11,7 @@ import { InventoryPageService } from '../../services/inventory-page.service';
 export class InventoryPageComponent implements OnInit {
   myProducts: Array<Product> = [];
 
-  constructor(private router: Router, public ipS: InventoryPageService) {}
+  constructor(private router: Router, public ipS: InventoryService) {}
 
   ngOnInit(): void {
     this.ipS.getProducts();

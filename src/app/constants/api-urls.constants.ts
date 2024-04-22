@@ -13,5 +13,17 @@ export const API_URLS = {
     UPDATE: '/api/products/update',
     DELETE: '/api/products/delete',
     LIST: '/api/products/list' // Live products
+  },
+  CART: {
+    BY_ID: '/api/cart',
+    ADD: '/api/cart/add',
+    UPDATE: '/api/cart/update',
+    DELETE: '/api/cart/delete'
+  },
+  WISHLIST: {
+    ALL: '/api/products',
+    ADD: '/api/products/add',
+    UPDATE: '/api/products/update',
+    DELETE: '/api/products/delete'
   }
 };
