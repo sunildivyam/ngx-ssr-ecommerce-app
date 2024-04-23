@@ -41,6 +41,13 @@ const routes: Routes = [
       import('./orders/orders.module').then((m) => m.OrdersModule)
   },
   {
+    path: 'manage-app-images',
+    loadChildren: () =>
+      import('./manage-app-images/manage-app-images.module').then(
+        (m) => m.ManageAppImagesModule
+      )
+  },
+  {
     path: '**',
     redirectTo: '',
     pathMatch: 'full'

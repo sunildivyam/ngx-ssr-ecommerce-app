@@ -7,6 +7,7 @@ import { ManageCategoriesPageModule } from './manage-categories-page';
 import { OrdersModule } from './orders/orders.module';
 import { ManageConfigModule } from './manage-config/manage-config.module';
 import { ManagePagesModule } from './manage-pages/manage-pages.module';
+import { ManageAppImagesModule } from './manage-app-images/manage-app-images.module';
 
 @NgModule({
   declarations: [],
@@ -17,7 +18,8 @@ import { ManagePagesModule } from './manage-pages/manage-pages.module';
     ManageCategoriesPageModule,
     OrdersModule,
     ManageConfigModule,
-    ManagePagesModule
+    ManagePagesModule,
+    ManageAppImagesModule
   ]
 })
 export class AdminModule {}
