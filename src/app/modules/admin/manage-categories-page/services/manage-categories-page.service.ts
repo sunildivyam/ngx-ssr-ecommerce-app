@@ -146,23 +146,61 @@ export class ManageCategoriesPageService {
     )}/${category.id}/${imageInfo.fileName}`;
 
     try {
+      // Delete Existing image
+      if (category.imageUrl) {
+        try {
+          const imgPath = `${this.gcService.getValue(
+            GlobalConfigParamsEnum.categoriesImagePath
+          )}/${category.id}/${category.imageUrl}`;
+          await this.fireImageService.deleteImageByPath(imgPath);
+        } catch (error) {}
+      }
+
+      // Upload new one
       await this.fireImageService.uploadImageByPath(
         imgPath,
         imageInfo.data,
-        true
+        false
       );
-
-      // Delete Existing image
-      if (category.imageUrl) {
-        const imgPath = `${this.gcService.getValue(
-          GlobalConfigParamsEnum.categoriesImagePath
-        )}/${category.id}/${category.imageUrl}`;
-        await this.fireImageService.deleteImageByPath(imgPath);
-      }
 
       category.imageUrl = imageInfo.fileName;
 
-      const updatedCategory = this.updateCategory(category.id, category);
+      const updatedCategory = await this.updateCategory(category.id, category);
+      return updatedCategory;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  public async updateBannerImage(
+    category: Category,
+    imageInfo: ImageUpload
+  ): Promise<Category> {
+    const imgPath = `${this.gcService.getValue(
+      GlobalConfigParamsEnum.categoriesImagePath
+    )}/${category.id}/${imageInfo.fileName}`;
+
+    try {
+      // Delete Existing image
+      if (category.bannerUrl) {
+        try {
+          const imgPath = `${this.gcService.getValue(
+            GlobalConfigParamsEnum.categoriesImagePath
+          )}/${category.id}/${category.bannerUrl}`;
+          await this.fireImageService.deleteImageByPath(imgPath);
+        } catch (error) {}
+      }
+
+      // Upload new one
+      await this.fireImageService.uploadImageByPath(
+        imgPath,
+        imageInfo.data,
+        false
+      );
+
+      category.bannerUrl = imageInfo.fileName;
+
+      const updatedCategory = await this.updateCategory(category.id, category);
       return updatedCategory;
     } catch (error) {
       throw error;

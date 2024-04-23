@@ -1,11 +1,10 @@
 <!-- If L1 route param is category of level1 -->
-<div class="flex-container">
-    <app-shop-level1-page *ngIf="isCatL1" [value]="paramCategories[0]">
-    </app-shop-level1-page>
-</div>
+
+<app-shop-level1-page *ngIf="isCatL1" [value]="paramCategories[0]">
+</app-shop-level1-page>
+
 <!-- If L1 route param is category of other tahn level1-->
 <!-- If one or more Level routes, like L1, L2, L3, L4, L5 all or any are available-->
 <!-- QueryParams has filters too-->
-<div class="flex-container">
-    <app-shop-page *ngIf="!isCatL1" [categories]="paramCategories"></app-shop-page>
-</div>
+
+<app-shop-page *ngIf="!isCatL1" [categories]="paramCategories"></app-shop-page>

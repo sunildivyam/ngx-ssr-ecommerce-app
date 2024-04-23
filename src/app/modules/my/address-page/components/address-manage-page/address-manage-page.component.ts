@@ -1,10 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { Address } from '@annuadvent/ngx-core/helpers-ecommerce';
-import { AddressPageService } from '../../services/address-page.service';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { AppError } from '@annuadvent/ngx-core/app-error';
 import { Subscription, filter } from 'rxjs';
-import { URLS } from '../../constants/api-urls.constants';
+import { AddressService } from '@annuadvent/ngx-ecommerce/address';
 
 /**
  * Add/Edit your Address
@@ -24,13 +23,16 @@ export class AddressManagePageComponent {
   error: AppError = null;
   navigationEndSubscription: Subscription;
   instructionsOnly: false;
-  pincodeUrl: string = URLS.PINCODE;
+  pincodeUrl: string = '';
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private adr: AddressPageService
+    private adr: AddressService,
+    @Inject('API_URLS') private API_URLS: any
   ) {
+    this.pincodeUrl = this.API_URLS.ADDRESS.PINCODE;
+
     this.adr.defaultAddress.subscribe(
       (address) => (this.defaultAddress = address)
     );

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { AddressPageService } from '../../services/address-page.service';
 import { Subscription, filter } from 'rxjs';
 import { Address } from '@annuadvent/ngx-core/helpers-ecommerce';
 import { AppError } from '@annuadvent/ngx-core/app-error';
+import { AddressService } from '@annuadvent/ngx-ecommerce/address';
 
 @Component({
   selector: 'app-address-list-page',
@@ -20,7 +20,7 @@ export class AddressListPageComponent {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private adr: AddressPageService
+    private adr: AddressService
   ) {
     this.adr.list.subscribe((list) => (this.list = list));
 

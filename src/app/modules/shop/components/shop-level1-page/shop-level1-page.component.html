@@ -1,2 +1,9 @@
-<anu-category-thumb-list class="row center" [items]="value | categorychildren : liveCategories"
-    [href]="'/shop/'+ value.id" [itemClassNames]="['col-sm-12', 'col-md-3', 'col-lg-2']"></anu-category-thumb-list>
+<anu-banners [autoSlide]="true" [duration]="2000"
+    [items]="[{href: '/shop/men', src: value?.bannerUrl | CategoryImageUrl: value}]"></anu-banners>
+
+<div class="flex-container">
+    <h1 class="spacing-around-v">SHOP FOR {{value?.title?.toUpperCase()}}</h1>
+    <anu-category-thumb-list class="row center" [items]="value | categorychildren : liveCategories"
+        [href]="'/shop/'+ value.id"
+        [itemClassNames]="['col-sm-12', 'col-md-3', 'col-lg-2', 'stretch']"></anu-category-thumb-list>
+</div>

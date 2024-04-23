@@ -5,6 +5,10 @@ import {
   AppStateService,
   DEFAULT_CATEGORY_IMAGE
 } from '../../../app-core';
+import {
+  GlobalConfigParamsEnum,
+  GlobalConfigService
+} from '@annuadvent/ngx-core/global-config';
 
 @Component({
   selector: 'app-shop-level1-page',
@@ -18,7 +22,10 @@ export class ShopLevel1PageComponent {
   liveCategories: Array<Category> = [];
   defaultImage = DEFAULT_CATEGORY_IMAGE;
 
-  constructor(private appStateService: AppStateService) {
+  constructor(
+    private appStateService: AppStateService,
+    private gcService: GlobalConfigService
+  ) {
     this.appStateService.appState.subscribe((state) => {
       this.liveCategories = state[APP_STATE_KEYS.liveCategories] || [];
     });

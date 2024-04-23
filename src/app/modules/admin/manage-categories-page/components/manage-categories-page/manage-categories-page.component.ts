@@ -133,6 +133,23 @@ export class ManageCategoriesPageComponent {
     }
   }
 
+  public async onBannerImageUpload(value: CategoryImageUpload) {
+    this.error = null;
+    this.loading = true;
+    const { category, imageUpload } = value;
+
+    try {
+      await this.pageService.updateBannerImage(category, imageUpload);
+      this.loading = false;
+    } catch (error) {
+      this.error = {
+        code: error.code,
+        message: error.message
+      };
+      this.loading = false;
+    }
+  }
+
   public onReload(): void {
     this.fetchCategories(true);
   }

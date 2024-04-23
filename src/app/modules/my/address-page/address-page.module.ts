@@ -4,9 +4,11 @@ import { CommonModule } from '@angular/common';
 import { AddressPageRoutingModule } from './address-page-routing.module';
 import { AddressListPageComponent } from './components/address-list-page/address-list-page.component';
 import { AddressManagePageComponent } from './components/address-manage-page/address-manage-page.component';
-import { AddressModule } from '@annuadvent/ngx-ecommerce/address';
+import {
+  AddressModule
+  // AddressService
+} from '@annuadvent/ngx-ecommerce/address';
 import { HttpClientModule } from '@angular/common/http';
-import { AddressPageService } from './services/address-page.service';
 import { SpinnerModule } from '@annuadvent/ngx-common-ui/spinner';
 import { ErrorModule } from '@annuadvent/ngx-common-ui/error';
 
@@ -20,7 +22,7 @@ import { ErrorModule } from '@annuadvent/ngx-common-ui/error';
     SpinnerModule,
     ErrorModule
   ],
-  providers: [AddressPageService],
+  // providers: [AddressService],
   exports: [AddressListPageComponent, AddressManagePageComponent]
 })
 export class AddressPageModule {}

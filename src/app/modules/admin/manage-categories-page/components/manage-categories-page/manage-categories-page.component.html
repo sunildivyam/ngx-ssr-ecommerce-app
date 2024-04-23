@@ -11,7 +11,8 @@
                 <anu-manage-categories class="container spacing-around-v" [levels]="levels" [loading]="loading"
                     [value]="categories" (addClicked)="onAdd($event)" (updateClicked)="onUpdate($event)"
                     (deleteClicked)="onDelete($event)" (reloadClicked)="onReload()"
-                    (uploadImageClicked)="onImageUpload($event)"></anu-manage-categories>
+                    (uploadImageClicked)="onImageUpload($event)"
+                    (uploadBannerImageClicked)="onBannerImageUpload($event)"></anu-manage-categories>
             </div>
             <div class="col-sm-12 hidden-md hidden-lg">
                 <anu-categories-tree [value]="categories" [levels]="levels"></anu-categories-tree>

@@ -13,6 +13,7 @@ import { ProductPageComponent } from './components/product-page/product-page.com
 import { ProductDetailModule } from '@annuadvent/ngx-ecommerce/product-detail';
 import { ErrorModule } from '@annuadvent/ngx-common-ui/error';
 import { SpinnerModule } from '@annuadvent/ngx-common-ui/spinner';
+import { BannersModule } from '@annuadvent/ngx-common-ui/banners';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { SpinnerModule } from '@annuadvent/ngx-common-ui/spinner';
     ProductDetailModule,
     HelpersCategoriesModule,
     ErrorModule,
-    SpinnerModule
+    SpinnerModule,
+    BannersModule
   ]
 })
 export class ShopModule {}
