@@ -15,15 +15,15 @@ export const API_URLS = {
     LIST: '/api/products/list' // Live products
   },
   CART: {
-    BY_ID: '/api/cart',
+    GET: '/api/cart',
     ADD: '/api/cart/add',
     UPDATE: '/api/cart/update',
     DELETE: '/api/cart/delete'
   },
   WISHLIST: {
-    ALL: '/api/products',
-    ADD: '/api/products/add',
-    UPDATE: '/api/products/update',
-    DELETE: '/api/products/delete'
+    GET: '/api/wishlist',
+    ADD: '/api/wishlist/add',
+    UPDATE: '/api/wishlist/update',
+    DELETE: '/api/wishlist/delete'
   }
 };

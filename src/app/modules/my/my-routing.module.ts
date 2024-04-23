@@ -38,7 +38,9 @@ const routes: Routes = [
   {
     path: 'wishlist',
     loadChildren: () =>
-      import('./wishlist/wishlist.module').then((m) => m.WishlistModule)
+      import('./wishlist-page/wishlist-page.module').then(
+        (m) => m.WishlistPageModule
+      )
   },
   {
     path: '**',

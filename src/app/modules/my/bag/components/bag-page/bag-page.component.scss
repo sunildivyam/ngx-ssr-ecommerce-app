@@ -1,5 +1,11 @@
+@import 'mixins';
+
 :host {
   display: flex;
   flex-direction: column;
   width: 100%;
+
+  @include large {
+    width: 80%;
+  }
 }

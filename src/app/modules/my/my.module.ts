@@ -7,7 +7,7 @@ import { DashboardModule } from './dashboard';
 import { AddressPageModule } from './address-page';
 import { OrdersModule } from './orders/orders.module';
 import { BagModule } from './bag/bag.module';
-import { WishlistModule } from './wishlist/wishlist.module';
+import { WishlistPageModule } from './wishlist-page/wishlist-page.module';
 
 @NgModule({
   declarations: [],
@@ -19,7 +19,7 @@ import { WishlistModule } from './wishlist/wishlist.module';
     AddressPageModule,
     OrdersModule,
     BagModule,
-    WishlistModule
+    WishlistPageModule
   ]
 })
 export class MyModule {}
