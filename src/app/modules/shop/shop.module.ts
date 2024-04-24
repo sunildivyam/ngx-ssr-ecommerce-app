@@ -7,13 +7,17 @@ import { ShopLandingPageComponent } from './components/shop-landing-page/shop-la
 import { ShopLevel1PageComponent } from './components/shop-level1-page/shop-level1-page.component';
 import { CategoryThumbModule } from '@annuadvent/ngx-ecommerce/category-thumb';
 import { CategoryThumbListModule } from '@annuadvent/ngx-ecommerce/category-thumb-list';
-import { HelpersCategoriesModule } from '@annuadvent/ngx-core/helpers-categories';
+import {
+  CategoryImageUrlPipe,
+  HelpersCategoriesModule
+} from '@annuadvent/ngx-core/helpers-categories';
 import { ProductThumbListModule } from '@annuadvent/ngx-ecommerce/product-thumb-list';
 import { ProductPageComponent } from './components/product-page/product-page.component';
 import { ProductDetailModule } from '@annuadvent/ngx-ecommerce/product-detail';
 import { ErrorModule } from '@annuadvent/ngx-common-ui/error';
 import { SpinnerModule } from '@annuadvent/ngx-common-ui/spinner';
 import { BannersModule } from '@annuadvent/ngx-common-ui/banners';
+import { AppImageUrlPipe } from '@annuadvent/ngx-core/helpers-ecommerce';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,7 @@ import { BannersModule } from '@annuadvent/ngx-common-ui/banners';
     ShopLevel1PageComponent,
     ProductPageComponent
   ],
-  providers: [],
+  providers: [CategoryImageUrlPipe, AppImageUrlPipe],
   imports: [
     CommonModule,
     ShopRoutingModule,
