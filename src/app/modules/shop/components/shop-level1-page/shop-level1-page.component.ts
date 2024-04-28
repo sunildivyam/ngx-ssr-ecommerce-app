@@ -33,6 +33,7 @@ export class ShopLevel1PageComponent implements OnInit, OnChanges {
   liveCategories: Array<Category> = [];
   defaultImage = DEFAULT_CATEGORY_IMAGE;
   bannerImages: Array<BannerItem> = [];
+  $bannerImages: Array<BannerItem> = [];
 
   constructor(
     private appStateService: AppStateService,
@@ -49,36 +50,40 @@ export class ShopLevel1PageComponent implements OnInit, OnChanges {
         GlobalConfigParamsEnum.bannerImageUrls
       );
 
+      this.$bannerImages = banners;
       this.setBannerImages((banners && banners[this.value?.id]) || []);
     });
   }
 
   private setBannerImages(bannerImages: Array<BannerItem>): void {
-    if (bannerImages?.length) {
-      this.bannerImages = bannerImages.map((bImg) => ({
-        href: bImg.href,
-        src: bImg.src?.startsWith('http')
-          ? bImg.src
-          : this.appImagePipe.transform(bImg.src)
-      }));
-    } else {
-      this.bannerImages = [
-        {
-          src: this.categoryImagePipe.transform(
-            this.value?.bannerUrl,
-            this.value
-          ),
-          href: `/shop/${this.value?.id}`
-        }
-      ];
-    }
+    setTimeout(() => {
+      if (bannerImages?.length) {
+        this.bannerImages = bannerImages.map((bImg) => ({
+          href: bImg.href,
+          src: bImg.src?.startsWith('http')
+            ? bImg.src
+            : this.appImagePipe.transform(bImg.src)
+        }));
+      } else {
+        this.bannerImages = [
+          {
+            src: this.categoryImagePipe.transform(
+              this.value?.bannerUrl,
+              this.value
+            ),
+            href: `/shop/${this.value?.id}`
+          }
+        ];
+      }
+    });
   }
 
   ngOnInit(): void {
-    this.setBannerImages(this.bannerImages);
+    this.setBannerImages(this.$bannerImages[this.value?.id]);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    changes['value'] && this.setBannerImages(this.bannerImages);
+    changes['value'] &&
+      this.setBannerImages(this.$bannerImages[this.value?.id]);
   }
 }

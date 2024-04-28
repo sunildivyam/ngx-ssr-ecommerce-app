@@ -2,7 +2,7 @@ import {
   FireAppConfig,
   FireStorageConfig,
   FireStoreConfig,
-  FirebaseConfig,
+  FirebaseConfig
 } from '@annuadvent/ngx-tools/fire-common';
 import { appConfig } from './app.config.development';
 import { FIREBASE_AUTH_SIGNIN_METHODS } from '@annuadvent/ngx-tools/fire-auth';
@@ -19,7 +19,7 @@ const ui = {
   callbacks: {
     signInSuccessWithAuthResult: null, // set handler from Login component consumer.
     signInFailure: null, // set handler from Login component consumer.
-    uiShown: null, // set handler from Login component consumer.
+    uiShown: null // set handler from Login component consumer.
   },
   signInOptions: [
     // List of OAuth providers supported.
@@ -27,7 +27,7 @@ const ui = {
     {
       provider: FIREBASE_AUTH_SIGNIN_METHODS.EMAIL_PASSWORD,
       // signInMethod: firebase.auth.EmailAuthProvider.EMAIL_LINK_SIGN_IN_METHOD,
-      requireDisplayName: true,
+      requireDisplayName: true
     },
     // Using Phone number
     {
@@ -35,29 +35,29 @@ const ui = {
       recaptchaParameters: {
         type: 'image', // or 'audio'
         size: 'normal', // or 'invisible' or 'compact'
-        badge: 'bottomleft', //' bottomright' or 'inline' applies to invisible.
+        badge: 'bottomleft' //' bottomright' or 'inline' applies to invisible.
       },
       defaultCountry: 'IN',
-      loginHint: '+91-1234567890',
+      loginHint: '+91-1234567890'
     },
     // Sign in with Google
     {
-      provider: FIREBASE_AUTH_SIGNIN_METHODS.GOOGLE,
+      provider: FIREBASE_AUTH_SIGNIN_METHODS.GOOGLE
     },
     // Sign in with Facebook
     {
-      provider: FIREBASE_AUTH_SIGNIN_METHODS.FACEBOOK,
+      provider: FIREBASE_AUTH_SIGNIN_METHODS.FACEBOOK
     },
 
     // Sign in with Twitter
     {
-      provider: FIREBASE_AUTH_SIGNIN_METHODS.TWITTER,
+      provider: FIREBASE_AUTH_SIGNIN_METHODS.TWITTER
     },
     // Sign in with Github
     {
-      provider: FIREBASE_AUTH_SIGNIN_METHODS.GITHUB,
-    },
-  ],
+      provider: FIREBASE_AUTH_SIGNIN_METHODS.GITHUB
+    }
+  ]
 };
 
 const app: FireAppConfig = {
@@ -68,30 +68,30 @@ const app: FireAppConfig = {
   messagingSenderId: '688781274685',
   appId: '1:688781274685:web:45ccbd37c0d7690e6e0454',
   measurementId: 'G-SLN5PFLR6W',
-  locationId: 'us-central',
+  locationId: 'us-central'
 };
 
 const storage: FireStorageConfig = {
-  baseStorageUrl: 'ecommerce/articles',
+  baseStorageUrl: 'ecommerce-333/articles',
   fireStorageBaseApiUrl:
-    'https://firebasestorage.googleapis.com/v0/b/ecommerce.appspot.com/o',
+    'https://firebasestorage.googleapis.com/v0/b/ecommerce-333.appspot.com/o',
   imageDimensions: {
     maxKBs: 1024,
     maxWidth: 900,
     maxHeight: 450,
     minWidth: 100,
-    minHeight: 100,
-  },
+    minHeight: 100
+  }
 };
 
 const store: FireStoreConfig = {
   firestoreBaseApiUrl:
-    'https://firestore.googleapis.com/v1/projects/ecommerce/databases/(default)/documents',
+    'https://firestore.googleapis.com/v1/projects/ecommerce-333/databases/(default)/documents'
 };
 
 export const firebaseConfig: FirebaseConfig = {
   app,
   ui,
   store,
-  storage,
+  storage
 };

@@ -18,9 +18,9 @@ import {
   remoteConfigRouter,
   categoriesRouter,
   cartRouter,
-  wishlistRouter
+  wishlistRouter,
+  productsRouter
 } from '@annuadvent/ngx-tools/fire-apis';
-import { productsRouter } from '@annuadvent/ngx-tools/fire-apis/src/products/routers/products.router';
 
 // APIs Routers
 // import { usersRouter } from '@annuadvent/ngx-tools/fire-apis';
@@ -42,7 +42,7 @@ const setNodeEnv = (): void => {
   if (environment.development) {
     env.FIREBASE_SERVICE_ACCOUNT = join(
       __dirname,
-      `../../../../../Annu Advent/Company Meta Info/App- documentation/ecommerce-333-firebase-adminsdk-fsgag-770ebfdddb.json`
+      `./ff6758hhyte44536677745ll/ecommerce-333-firebase-service.json`
     );
   }
 };
