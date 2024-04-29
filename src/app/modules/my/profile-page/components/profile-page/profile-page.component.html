@@ -1,6 +1,13 @@
+<div class="flex-container primary-light-grad spacing">
+  <h1>My Profile</h1>
+  <anu-login-status (profileClicked)="loginStatusClicked()" (signOutClicked)="loginStatusClicked()"
+    (signInClicked)="loginStatusClicked()" [loginPageUrl]="'/login'" [profilePageUrl]="'/my/profile'"
+    [loggedOutPageUrl]="'/logout'">
+  </anu-login-status>
+</div>
+
 <div class="flex-container">
   <div class="profile-card container relative shadow spacing spacing-around-v">
-    <h1>My Profile</h1>
     <anu-error *ngIf="error" [code]="error?.code" [message]="error?.message"></anu-error>
     <!-- Basic Profile -->
     <anu-dynamic-form class="container" [params]="basicProfileParams" [value]="profile" [loading]="loading"

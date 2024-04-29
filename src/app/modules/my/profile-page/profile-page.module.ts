@@ -11,6 +11,7 @@ import { UtilsModule } from '@annuadvent/ngx-core/utils';
 import { HttpClientModule } from '@angular/common/http';
 import { ProfilePageService } from './services/profile-page.service';
 import { CollapsibleModule } from '@annuadvent/ngx-common-ui/collapsible';
+import { FireAuthModule } from '@annuadvent/ngx-tools/fire-auth';
 
 @NgModule({
   declarations: [ProfilePageComponent],
@@ -24,7 +25,8 @@ import { CollapsibleModule } from '@annuadvent/ngx-common-ui/collapsible';
     SpinnerModule,
     ErrorModule,
     UtilsModule,
-    CollapsibleModule
+    CollapsibleModule,
+    FireAuthModule
   ],
   exports: [ProfilePageComponent]
 })

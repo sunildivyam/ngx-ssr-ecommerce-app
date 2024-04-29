@@ -13,6 +13,11 @@ import {
 import { NavService } from '../../modules/app-core/services/nav.service';
 import { AppError } from '@annuadvent/ngx-core/app-error';
 import { AppErrorService } from '../../modules/app-core/services/app-error.service';
+import {
+  ICON_CART,
+  ICON_USER,
+  ICON_WISHLIST
+} from '@annuadvent/ngx-common-ui/icons';
 
 @Component({
   selector: 'app-root',
@@ -28,6 +33,9 @@ export class AppComponent implements OnInit {
   themeFontSizes: Array<string> = ['12px', '16px', '20px'];
   socialMediaButtons: Array<SocialMediaButton> = [];
   error: AppError;
+  iconProfile = ICON_USER;
+  iconWishlist = ICON_WISHLIST;
+  iconCart = ICON_CART;
 
   constructor(
     private themeService: ThemeService,

@@ -22,4 +22,20 @@
     top: 0;
     z-index: $menu-z-index;
   }
+
+  .nav-icon {
+    width: 35px;
+    height: 35px;
+
+    @include medium {
+      width: 25px;
+      height: 25px;
+    }
+
+
+    @include small {
+      width: 20px;
+      height: 20px;
+    }
+  }
 }

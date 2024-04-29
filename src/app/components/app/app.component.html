@@ -5,10 +5,10 @@
   <anu-nested-nav class="shadow-half flex-container primary-lightest-grad spacing-v-half" [items]="mainMenuItems"
     [logoUrl]="'/assets/vaachii-logo.png'" [fullWidthItems]="true" [fixed]="true">
     <small class="row nowrap">
-      <input [style.maxWidth]="'3rem'" type="text" class="spacing-around-h" placeholder="Search" />
-      <a class="spacing-around-h" href="/my/bag">Bag</a>
-      <a class="spacing-around-h" href="/my/wishlist">Wishlist</a>
-      <a class="spacing-around-h" href="/my/profile">Profile</a>
+      <input [style.maxWidth]="'3rem'" type="text" class="nav-search spacing-around-h hidden-sm" placeholder="Search" />
+      <a class="nav-icon spacing-around-h-half" href="/my/bag"><img [src]="iconCart" /></a>
+      <a class="nav-icon spacing-around-h-half" href="/my/wishlist"><img [src]="iconWishlist" /></a>
+      <a class="nav-icon spacing-around-h-half" href="/my/profile"><img [src]="iconProfile" /></a>
 
       <!--
         <anu-login-status (profileClicked)="loginStatusClicked()" (signOutClicked)="loginStatusClicked()"
