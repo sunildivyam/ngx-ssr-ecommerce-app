@@ -6,5 +6,10 @@ service firebase.storage {
       allow write, create, delete: if request.auth.token.admin == true;
       allow read
     }
+     match /ecommerce/images/{subFolder}/{img=**} {
+      // DEV: Only allow uploads of sitemap.xml
+      allow write, create, delete: if request.auth;
+      allow read
+    }
   }
 }
