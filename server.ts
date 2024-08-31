@@ -71,7 +71,7 @@ export function app(): express.Express {
   // Add custom APIs | APP_SPECIFIC
 
   server.use('/api/images', imagesRouter);
-  server.use('/sitemap.xml', sitemapRouter);
+  server.use('/api/sitemap', sitemapRouter);
   server.use('/api/addresses', addressRouter);
   server.use('/api/users', usersRouter);
   server.use('/api/remote-config', remoteConfigRouter);
