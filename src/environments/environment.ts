@@ -2,13 +2,14 @@ import { AppConfig } from '@annuadvent/ngx-core/app-config';
 import { appConfig } from '../app/constants/app.config.development';
 import { firebaseConfig } from '../app/constants/firebase.config.development';
 import { dashboardConfig } from '../app/constants/dashboard.config.development';
+import { development as keyConf } from '../../.secrets/secrets';
 
-firebaseConfig.app.apiKey = '';
+firebaseConfig.app.apiKey = keyConf.firebaseKey;
 
 const config: AppConfig = {
   ...appConfig,
   firebase: firebaseConfig,
-  dashboard: dashboardConfig,
+  dashboard: dashboardConfig
 };
 
 export const environment = {
@@ -16,7 +17,7 @@ export const environment = {
   staging: false,
   production: false,
   envConfiguration: 'development Configuration',
-  appConfig: config,
+  appConfig: config
 };
 
 /*

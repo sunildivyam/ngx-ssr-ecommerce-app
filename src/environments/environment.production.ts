@@ -1,13 +1,14 @@
 import { appConfig } from '../app/constants/app.config.production';
 import { dashboardConfig } from '../app/constants/dashboard.config.production';
 import { firebaseConfig } from '../app/constants/firebase.config.production';
+import { production as keyConf } from '../../.secrets/secrets';
 
-firebaseConfig.app.apiKey = '';
+firebaseConfig.app.apiKey = keyConf.firebaseKey;
 
 const config = {
   ...appConfig,
   firebase: firebaseConfig,
-  dashboard: dashboardConfig,
+  dashboard: dashboardConfig
 };
 
 export const environment = {
@@ -15,7 +16,7 @@ export const environment = {
   staging: false,
   production: true,
   envConfiguration: 'production Configuration',
-  appConfig: config,
+  appConfig: config
 };
 
 /*
